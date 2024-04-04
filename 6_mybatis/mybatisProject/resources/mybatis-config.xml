@@ -22,6 +22,9 @@
 	<typeAliases>
 		<!-- 추후 작성 예정 -->
 		<typeAlias alias="Member" type="com.kh.mybatis.member.model.vo.Member"/>
+		<typeAlias alias="Board" type="com.kh.mybatis.board.model.vo.Board" />
+		<typeAlias alias="PageInfo" type="com.kh.mybatis.board.model.vo.PageInfo" />
+		<typeAlias alias="Reply" type="com.kh.mybatis.board.model.vo.Reply" />
 	</typeAliases>
 	
 	<!--  * environment : mybatis에서 연동할 DB정보를 작성하는 영역 -->
@@ -57,5 +60,6 @@
 	<!-- * mapper : 실행할 sql문을 저장한 mapper 파일들을 등록하는 영역 -->
 	<mappers>
 		<mapper resource="/mapper/member-Mapper.xml"/>
+		<mapper resource="/mapper/board-Mapper.xml" />
 	</mappers>
 </configuration>

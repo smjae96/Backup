@@ -37,6 +37,7 @@ public class LoginController extends HttpServlet {
 		m.setUserId(userId);
 		m.setUserPwd(userPwd);
 		Member loginUser = new MemberServiceImpl().loginMember(m);
+		
 		if(loginUser != null) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", loginUser);

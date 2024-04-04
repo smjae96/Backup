@@ -1,0 +1,43 @@
+package com.kh.mybatis.board.model.dao;
+
+import java.util.ArrayList;
+
+import org.apache.ibatis.session.RowBounds;
+import org.apache.ibatis.session.SqlSession;
+
+import com.kh.mybatis.board.model.vo.Board;
+import com.kh.mybatis.board.model.vo.PageInfo;
+
+public class BoardDao {
+
+	public int selectListCount(SqlSession sqlSession) {
+		int count = sqlSession.selectOne("boardMapper.selectListCount");
+		return count;
+	}
+
+	public ArrayList<Board> selectList(SqlSession sqlSession, PageInfo pi) {
+		// 전체 목록을 가지고 올때..
+		// sqlSession.selectList("boardMapper.selectList");
+		
+		/*
+		 * * 마이바티스에서는 페이징 처리를 위해 RowBounds라는 클래스 제공
+		 * 	- offset : DB에서 가지고 온 리스트에서 몇 번째부터 조회할 것인지에 대한 값 
+		 * 			( 내가 건너뛸 숫자. ex) 6번 게시물부터 조회할거라면 offset= 5  )
+		 * 	- limit : offset으로부터 몇 개를 조회할 것인지에 대한 값
+		 */
+		
+		/*
+		 * ex) boardLimit : 5
+		 * 							offset(건너뛸 숫자)	limit(조회할 숫자)
+		 * 		currentPage : 1 1~5		0					5
+		 * 					: 2 6~10	5					5				
+		 * 					: 3 11~15	10					5
+		 * 		...	
+		 */
+		int offset = (pi.getCurrentPage() -1) * pi.getBoardLimit();
+		int limit = pi.getBoardLimit();
+		RowBounds rBounds = new RowBounds(offset, limit);
+		sqlSession.selectList(null, pi, null)
+	}
+
+}

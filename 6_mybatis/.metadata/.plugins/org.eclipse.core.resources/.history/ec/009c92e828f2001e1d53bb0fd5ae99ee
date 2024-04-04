@@ -1,0 +1,78 @@
+package com.kh.mybatis.board.controller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+import com.kh.mybatis.board.model.vo.Board;
+import com.kh.mybatis.board.model.vo.PageInfo;
+import com.kh.mybatis.board.service.BoardServiceImpl;
+
+/**
+ * Servlet implementation class BoardListViewController
+ */
+@WebServlet("/list.bo")
+public class BoardListViewController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public BoardListViewController() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int listCount;			// 전체 게시글 개수
+		int currentPage;		// 현재 페이지 (사용자로부터 요청 시 전달될 값)
+		int pageLimit;			// 페이지 하단에 표시될 페이징바의 최대 개수
+		int boardLimit; 			// 한 페이지에 표시할 게시글의 최대 개수
+		
+		// 위의 4개의 데이터를 통해서 아래의 3개의 데이터를 추출
+		int maxPage;		// 가장 마지막 페이지 (총 페이지 수)
+		int startPage;		// 페이징 바의 시작번호
+		int endPage;		// 페이징 바의 마지막번호
+		
+		// listCount ( 전체 게시글 개수 ) : DB에 저장된 데이터의 개수를 조회
+		listCount = new BoardServiceImpl().selectListCount();
+		// currentPage (현재 페이지) : 요청 시 전달된 값에서 조회(사용자 요청)
+		currentPage = Integer.parseInt(request.getParameter("cpage"));
+		// pageLimt, boardLimt : 10
+		pageLimit = 10;		// 페이징바의 최대 개수 (단위)
+		boardLimit = 5;	// 한 페이지에 표시할 게시글 개수 (단위)
+		maxPage = (int)Math.ceil((double)listCount / boardLimit);	// 마지막 페이지 번호
+		startPage = (currentPage - 1) / pageLimit * pageLimit + 1;	// 페이징 바의 시작 번호
+		endPage = startPage + pageLimit - 1;	//페이징 바의 마지막 번호
+		if (maxPage < endPage) {
+			endPage = maxPage;
+		}
+		PageInfo pi = new PageInfo(listCount, currentPage, pageLimit, boardLimit, maxPage, startPage, endPage);
+				
+				
+		ArrayList<Board> list = new BoardServiceImpl().selectList(pi);
+				
+		request.setAttribute("pi", pi);
+		request.setAttribute("list", list);
+		
+		request.getRequestDispatcher("WEB-INF/views/board/boardListView.jsp").forward(request, response);
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

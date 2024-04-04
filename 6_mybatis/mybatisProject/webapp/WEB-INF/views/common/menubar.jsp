@@ -33,6 +33,22 @@
         margin-top: 50px;
     }
 </style>
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+	integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+	crossorigin="anonymous">
+</script>
+<!-- bootstrap CSS -->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+	crossorigin="anonymous">
+<!-- bootstrap JS -->
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+	crossorigin="anonymous"></script>
 </head>
 <body>
 	<c:if test="${alertMsg != null }">
@@ -75,7 +91,7 @@
             <table>
                 <tr>
                     <td colspan="2">
-                        <h3>${loginUser.userId }님 환영합니다^^</h3>
+                        <h3>${loginUser.userName }님 환영합니다^^</h3>
                     </td>
                 </tr>
                 <tr align="center">
@@ -92,8 +108,13 @@
     <div class="nav-area" align="center">
         <div class="menu">HOME</div>
         <div class="menu">공지사항</div>
-        <div class="menu">게시판</div>
+        <div class="menu" onclick="board()">게시판</div>
         <div class="menu">ETC</div>
     </div>
 </body>
+<script>
+	function board() {
+		location.href = "list.bo?cpage=1";
+	}
+</script>
 </html>
