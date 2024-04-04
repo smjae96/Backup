@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js" /></script>
+    <style>
+    .js-load {
+        display: none;
+    }
+    .js-load.active {
+        display: block;
+    }
+    .js-load:after {
+        display: none;
+    }
+    .btn-wrap {
+        display: block;
+    }
+    ul.menu li { list-style:none;  position:relative; float:left; width:calc(100%/3 - 12px); margin:12px 6px 0; }
+    .more {width:100%; line-height:30px; color:#72af2c;font-size:18px;font-weight:700;text-align:center;border:1px solid #72af2c;border-radius:6px;display:block;}
+    </style>
+    <script>
+    $(window).on('load', function () {
+        load('#js-load', '3');
+    
+        $("#js-btn-wrap").on("click", function () {
+            load('#js-load', '3', '#js-btn-wrap');
+        })
+    });
+    function load(id, cnt, btn) {
+        var girls_list = id + " .js-load:not(.active)";
+        var girls_length = $(girls_list).length;
+        var girls_total_cnt;
+        if (cnt < girls_length) {
+            girls_total_cnt = cnt;
+        } else {
+            girls_total_cnt = girls_length;
+            $(btn).hide();
+        }
+        $(girls_list + ":lt(" + girls_total_cnt + ")").addClass("active");
+    }
+    </script>
+    <title>Document</title>
+</head>
+<body>
+   
+<div id="js-load" class="main">
+	<ul class="menu">
+	<? for($i = 1; $i<=10; $i++) {?>
+	<li class="lists__item js-load">
+		<a href="javascript:void(0);">
+			 <img src="/assets/img/no-image-e3699ae23f866f6cbdf8ba2443ee5c4e.jpg" alt="" class="w-100" style="height:150px;">
+		</a>
+	</li>
+	<? } ?>
+	</ul>
+</div>
+<div style="padding-top:20px;">
+<button type="button" id="js-btn-wrap" class="more">더보기</button>
+</div>
+</body>
+</html>

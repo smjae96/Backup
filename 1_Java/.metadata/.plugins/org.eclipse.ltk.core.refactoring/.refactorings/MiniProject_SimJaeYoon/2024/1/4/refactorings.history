@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;Restaurant&apos; to &apos;restaurant&apos;&#x0D;&#x0A;- Original project: &apos;MiniProject_SimJaeYoon&apos;&#x0D;&#x0A;- Original element: &apos;MiniProject_SimJaeYoon/src/Restaurant&apos;&#x0D;&#x0A;- Renamed element: &apos;MiniProject_SimJaeYoon/src/restaurant&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;Restaurant&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;Restaurant" name="restaurant" qualified="false" references="true" stamp="1705990317738" textual="false" version="1.0"/>
+</session>

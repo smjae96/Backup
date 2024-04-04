@@ -1,0 +1,249 @@
+<!DOCTYPE html>     <!-- 문서 유형 -->
+<html lang = "ko">              <!-- html 문서의 기본 태그 -->
+    <!-- lang:언어 관련 속성. 웹페이지 검색 시 언어관련 필터링이 적용. -->
+    <head>
+        <!-- head: 문서 관련 정보, 설정, 외부문서 연결 -->
+        <meta charset="UTF-8"> <!-- charset: 인코딩 설정 -->
+        <title> HTML Basic Page </title> <!-- title 태그 : 브라우저 탭 내용 -->
+    </head>
+    <>
+        <!-- body: 브라우저에 표시할 내용 -->
+        <p align = "center">HTML/CSS</p>
+
+        <!-- 글자 관련 태그 : 화면에 텍스트를 표시하기 위한 태그 -->
+        <!-- * 제목 태그 -->
+        <h1>h1 태그입니다.</h1>
+        <h2>h2 태그입니다.</h2>
+        <h3>h3 태그입니다.</h3>
+        <h4>h4 태그입니다.</h4>
+        <h5>h5 태그입니다.</h5>
+        <h6>h6 태그입니다.</h6>
+        <br>        <!-- br : 줄바꿈 태그 -->
+        <hr>        <!-- hr : 가로줄 표시 태그 -->
+        <!-- * 강조 또는 스타일이 있는 태그 -->
+        안녕하세요. 제 이름은 심재윤입니다.<br>
+        <!-- strong : 강조 태그, 굵게 표시됨. -->
+        안녕하세요. 제 이름은 <strong>심재윤</strong>입니다. <br>
+        <!-- mark : 형광펜 표시 태그. -->
+        안녕하세요. 제 이름은 <mark>심재윤</mark>입니다. <br>
+        <!-- s : 취소선 태그 -->
+        안녕하세요. 제 이름은 <s>심재윤</s>입니다. <br>
+        <!-- u : 밑줄 태그 -->
+        <p>안녕하세요. 제 이름은 <u>심재윤</u>입니다.</p>
+        <!-- em : 기울임 태그 -->
+        안녕하세요. 제 이름은 <em>심재윤</em>입니다.<br>
+        <!-- small : 기본 텍스트 크기보다 작게 표시 태그 -->
+        안녕하세요. 제 이름은 <small>심재윤</small>입니다.<br>
+        <!-- blockquote : 인용글을 표시하는 태그. 자동 들여쓰기. 줄바꿈(개행) 가지고 있음. -->
+        <blockquote style="color:magenta;">블로그나 다른 곳에서 글을 인용할 때</blockquote>
+        <!-- q : 인용 문구를 큰따옴표("")로 감싸서 표시하는 태그. 줄바꿈 없음. -->
+        <q>블로그 인용 글 표시</q><br>
+        <!-- sup :  위 첨자 표시 태그 -->
+        테스트 문구 m<sup>2</sup>
+        <!-- sub : 아래 첨자 표시 태그 -->
+        테스트 문구 m<sub>2</sub>30<sub>km</sub>
+        <!-- p: 블록 글자 태그. 브라우저 가로 전체 영역을 차지 -->
+        <!-- span : 인라인 태그. 내용부분만 영역을 차지 -->
+        <p style="background-color: aqua;">나는 테스트 <span style ="color: red;"> 문구</span>입니다.</p> 
+        <br>
+        <hr>
+        <!-- 목록 관련 태그 -->
+        <!-- ul : 순서가 필요없는 목록 표시할 때 사용 태그 -->
+        <ul>
+            <!-- li : 목록 아이템을 표시하는 태그-->
+            <li>목록 1</li>
+            <li>목록 2</li>
+            <li>목록 3</li>
+        </ul>
+        <!-- ol : 순서가 있는 목록을 표시할 때 사용 태그 
+                속성 : type (순서를 표시할 문자, 1/A/i..)
+                       start (시작 순번/번호)
+        -->
+        
+        <ol type = "a" start="3">
+            <li>목록 A</li>
+            <li>목록 B</li>
+            <li>목록 C</li>
+        </ol>
+        <hr>
+        <!-- 테이블(표) 태그 
+            - table : 테이블을 표시하는 태그
+            - thead : 제목(헤드)부분을 표시하는 태그
+            - tbody : 표의 내용 부분을 표시하는 태그
+                - tr : 테이블의 행을 표시하는 태그
+                    - th : 제목 한 셀을 표시하는 태그
+                    - td : 내용 형식의 한 셀을 표시하는 태그
+        -->
+        <table border = "1">
+            <tr>
+                <th>제목1</th>
+                <th>제목2</th>
+            </tr>
+            <tr>
+                <td>내용1 </td>
+                <td>내용2</td>
+            </tr>
+            <tbody>
+                <tr>
+                    <!-- colspan="n"): 열 병합. n:병합할 열의 개수 -->
+                    <td colspan="2">내용1번</td>
+                    <!-- rowspan="n"): 행 병합. n:병합할 행의 개수-->
+                    <td rowspan="2">내용2번</td>
+                </tr>
+                <tr>
+                    <td>내용1번</td>
+                    <td>내용2번</td>
+                    <!-- <td>내용3번</td> -->
+                </tr>
+            </tbody>
+        </table>
+
+        <table border="1">
+            <tr style="color: aqua; background-color: blue;">
+                <th>No</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>날짜</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td><a href="./00_HTML_Basic.html" target="_blank">HTML 메모</a></td>
+                <td>심재윤</td>
+                <td>2024-02-13</td>
+            </tr>
+        </table>
+
+        <br>
+        <hr>   
+        <!-- 영역(구조) 관련 태그 -->
+        <!-- div: block 형식의 공간(영역) 태그-->
+        <div style="background-color: blueviolet;">
+            <!-- span: intline 형식(내용만큼 영역을 차지) -->
+            <span style = "color:red; background-color: aqua;" >내용1</span>
+            <span>내용2</span>
+            <span style = "color: blue; background-color: yellow;">내용3</span>
+        </div>
+        <!-- iframe: 작성중인 웹 문서(html) 내에 다른 웹 페이지를 추가할 때 사용하는 태그 
+            * width: 가로길이
+            * height: 세로길이
+            * src : 연결할 웹페이지 경로
+        -->
+        <iframe width="350" height="200" src="https://www.youtube.com/watch?v=y8vv3rPqcNw"
+        title="Youtube play" frameborder="0" allow="accelerometer; autoplay; clipboard-write;
+        encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+        <br>
+        <hr>
+        <!-- 미디어 태그 
+            * width: 가로길이
+            * height: 세로길이
+            * src: 이미지 경로
+            * alt: 이미지 설명 (파일을 찾지 못했을 때 표시되는 문구) 
+        -->
+            
+        <img width="250" height="250" src="./image.webp" alt="고양이 이미지"/><br>
+        <!-- audio태그: 음악/음성 파일을 표시하는 태그 -->
+        <audio src="경로" controls autoplay loop preload="none"></audio><br>
+        <!-- video태그 : 영상 파일을 표시하는 태그 -->
+        <video src="경로" controls autoplay loop preload="auto"></video>
+        <br>
+        <hr>
+        <!-- 하이퍼 텍스트 태그 -->
+        <!-- a: 지정한 페이지로 이동시켜주는 태그
+            * href: 이동할 페이지 주소(경로)
+            * target: 해당 페이지가 표시될 위치
+         -->
+        <!-- 텍스트에 링크를 걸때 -->
+        <a href="https://www.naver.com" target="_blank">네이버로 이동</a>
+        <a href="./99_Introduce.html" target="_blank">소개 페이지로 이동</a><br>
+        <!-- 이미지에 링크를 걸때-->
+        <a href="https://pixabay.com/" target="_blank">
+            <img src="./image.webp" width = "250" height = "250"/>
+        </a>
+        <br>
+        <hr>
+        <!-- 폼 관련 태그 
+            - form 태그: 사용자가 입력한 데이터를 보내는 방식과 처리할 프로그램을 정하는 태그
+        -->
+        <!-- 입력 태그 -->
+        아이디: <input type="text" name="test" placeholder="아이디를 입력하세요."/>
+        비밀번호: <input type="password" name="testPwd" placeholder="비밀번호 입력">
+        <br><br>
+        <button onclick="alert('버튼이 클릭됨')">버튼태그</button>
+        <input type ="button" value="버튼태그2" onclick="alert('버튼2가 클릭됨')">
+        <span onclick="alert('span태그를 클릭')">버튼3</span>
+        <br>
+        <br>
+        <!-- method: 통신방식(GET/POST/PUT/DELETE) / 요청 전송 방식을 지정하는 속성
+             action: 데이터를 전달한 목적지(요청url 등 작성) / 해당 FORM 내에 사용자가 작성한
+                     값들을 전달하면서 요청할 서버의 경로(어느 기능을 담당하는 컨트롤러로 보낼건지 지정)
+        -->
+        <!-- GET방식 : 요청 시, 사용자가 입력한 값들이 url 주소 뒤에 노출되는 방식.-->
+        <!-- POST방식 : 요청 시, 사용자가 입력한 값들이 url 주소에 노출되지 않는 방식.
+                        주로, 민감정보를 넘길 때 post방식을 쓰는 것이 좋음. -->
+        <form method="GET" action="./server">
+            <input type ="text" name="userId" placeholder="아이디를 입력하시오" />
+            <input type="password" name="userPw" placeholder="비밀번호를 입력하시오"/>
+            <label>
+                <input type="checkbox" />
+                아이디 저장하기
+            </label>
+            <input type="submit" value="login" />
+        </form>
+
+
+        <!-- select: 목록에서 선택을 할 수 있도록 표시하는 태그 -->
+        <select id="select-box" onchange="selectOption()">
+            <!-- option: 선택 목록(아이템)을 표시하는 태그 -->
+            <option value="red">빨간색</option>
+            <option value="green">초록색</option>
+            <option value="blue">파란색</option>
+        </select>
+        <!-- script: 자바스크립트 작성 태그 -->
+        <script>
+            // 한줄 주석
+            /*
+                범위 주석
+                - 자바스크립트 함수 선언: function 함수명() {}
+            */
+            function selectOption() {
+                const selectBox = document.getElementById('select-box');
+                console.log(selectBox.value);
+            }
+        </script>
+        <br>
+        <!-- radio-->
+        <input type="radio" name="testRadio" id="radio-test" />
+        <label for="radio-test">라디오 태그</label>
+
+        <!-- name 속성 값을 동일하게 주면 그 중 하나만 선택할 수 있음!-->
+        <div>
+        <input type="radio" name="color" id="radio-red" />
+        <label for="radio-red">빨간색</label>      
+        </div>
+        <div>
+        <input type="radio" name="color" id="radio-green" />
+        <label for="radio-green">초록색</label>    
+        </div>
+        <div>
+        <input type="radio" name="color" id="radio-blue" />
+        <label for="radio-blue">파란색</label>    
+        </div>
+
+
+        <input type="checkbox" id="baseball" name="hobby" value="baseball"> 
+        <label for="baseball">야구</label>
+        <input type="checkbox" id="basketball" name="hobby" value="basketball"> 
+        <label for="basketball">농구</label>
+        <input type="checkbox" id="soccer" name="hobby" value="soccer"> 
+        <label for="soccer">축구</label>
+
+        <br>
+        
+        <br>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/AtysAatN1oc" title="YouTube video player"
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write;
+                encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+        </iframe>
+    </body>
+</html>

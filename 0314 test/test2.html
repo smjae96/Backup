@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0314 UI 구현</title>
+<style>
+    body {
+        background-color: lightblue
+    }
+
+    fieldset {
+        background-color: lightgray;
+        max-width: 700px;
+        margin: 20% auto;
+        text-align: center;
+        padding: 1%;
+        padding-top: 3%
+    }
+    div {
+        color: gray;
+        font-size: small;
+    }
+    button:hover {
+        cursor: pointer;
+    }
+    input {
+        border: 0px;
+        background-color: lightgray;
+        border-bottom: 3px dashed black;
+        width: 100%;
+    }
+    th {
+        width: 30%;
+    }
+</style>
+</head>
+
+<body>
+    
+        <fieldset>
+            <table>
+                <tr>
+                    <th><label>아이디</label></th>
+                    <td><input type="text" id="inputId" name="userId" required></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><div id="noneId"></div></td>
+                </tr>
+                <tr>
+                    <th><label>패스워드</label></th>
+                    <td><input type="password" onclick="inputPwd()" id="inputPassword" name="userPwd" required></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><div id="inputPass"></div></td>
+                </tr>
+                <tr>
+                    <th><label>패스워드 확인</label></th>
+                    <td><input type="password" id="inputPasswordCheck" name="userPwdCheck" required></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><div id="nonePwdCheck"></div></td>
+                </tr>
+                <tr>
+                    <th><label>이메일</label></th>
+                    <td><input type="text" name="email" id="email1" style="width: 45%;">@<input type="text" name="email" id="email2" style="width: 45%;"></td>
+                </tr>
+                <tr>
+                    <th><label>주소</label></th>
+                    <td><input type="text" name="address" id="address1"></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><input type="text" name="address" id="address2"></td>
+                </tr>
+            </table>
+            <br><br>
+            <button type= "submit" id="signIn" style="width: 100%; background-color: rgb(123, 218, 123); border: 0px; font-size: larger;" onclick="return signIn();">가입</button>
+        </fieldset>
+    
+</body>
+<script>
+    let pwCheck = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,32}$/
+    
+    function inputPwd() {
+        let inputPass = document.getElementById("inputPass");
+        inputPass.innerHTML = '영문자 대/소문자 특수문자, 숫자 포함 8 ~32자'
+    }
+    inputId.onblur = function() {
+        if(document.getElementById("inputId").value == "") {
+            document.getElementById("noneId").innerHTML = '필수 입력 항목입니다.'
+        } else {
+            document.getElementById("noneId").innerHTML = null;
+        }
+
+        
+    }
+    inputPassword.onblur = function() {
+        if(document.getElementById("inputPassword").value == "") {
+            inputPass.innerHTML = '필수 입력 항목입니다!'
+        } else {
+            inputPass.innerHTML = null;
+        }
+        if(!(pwCheck.test(document.getElementById("inputPassword").value))) {
+            inputPass.innerHTML = '영문자 대/소문자 특수문자, 숫자 포함 8 ~32자'
+        } else {
+            inputPass.innerHTML = null;
+        }
+    }
+    inputPasswordCheck.onblur = function() {
+        if(document.getElementById("inputPasswordCheck").value == "") {
+            document.getElementById("nonePwdCheck").innerHTML = '필수 입력 항목입니다.'
+        } else {
+            document.getElementById("nonePwdCheck").innerHTML = null;
+        }
+    }
+    function signIn() {
+        
+        if(document.getElementById("inputId").value == "") {
+            alert("아이디를 입력하시지 않았습니다!")
+            return false;
+        } 
+        if(document.getElementById("inputPassword").value == "") {
+            alert("패스워드를 입력하시지 않았습니다!")
+            return false;
+        } 
+        if(document.getElementById("inputPasswordCheck").value == "") {
+            alert("패스워드 확인을 입력하시지 않았습니다!")
+            return false;
+        }
+        if(document.getElementById("inputPassword").value != document.getElementById("inputPasswordCheck").value) {
+            alert("패스워드와 패스워드 확인이 일치하지 않습니다!")
+            return false;
+        }
+        if(!(pwCheck.test(document.getElementById("inputPasswordCheck").value))) {
+            alert("비밀번호 조건에 맞지 않습니다!")
+            
+        }
+        else {
+            document.getElementById("inputId").value = ""
+            document.getElementById("inputPassword").value = ""
+            document.getElementById("inputPasswordCheck").value = ""
+            document.getElementById("email1").value = ""
+            document.getElementById("email2").value = ""
+            document.getElementById("address1").value = ""
+            document.getElementById("address2").value = ""
+            alert("회원가입 성공!")
+
+            location.href = "https://www.google.co.kr"
+        }
+    }
+</script>
+</html>

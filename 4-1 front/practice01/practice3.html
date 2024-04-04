@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice3</title>
+    <script src="practice3.js"></script>
+    <style>
+        .nodot {
+            list-style-type: none;
+            padding-inline-start: 0px;
+        }
+        .margin {
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- fieldset : 폼 내의 영역을 나누어 표시할 때 사용 -->
+    <fieldset>
+        <!-- legend : fieldset태그로 묶어놓은 영역에 제목을 표시할 때 사용 -->
+        <legend>회원가입</legend>
+        <ul class="nodot">
+            <li class="margin">
+                <label for="userId">아이디 :</label>
+                <input type="text" id="userId" onkeyup="checkId()" />
+                <span id="area1"></span>
+            </li>
+            <li class="margin">
+                <label for="userPw">비밀번호 :</label>
+                <input type="password" id="userPw" />
+                <span id="area2"></span>
+            </li>
+            <li class="margin">
+                <label for="userPwCheck">비밀번호 확인 :</label>
+                <input type="password" id="userPwCheck" onblur="checkPw()" />
+                <span id="area3"></span>
+            </li>
+            <li class="margin">
+                <label for="name">이름 :</label>
+                <input type="text" id="name"  />
+                <span id="area4"></span>
+            </li>
+        </ul>
+        <button onclick="signUp()">회원가입</button>
+    </fieldset>
+    
+    
+
+    
+</body>
+</html>

@@ -1,0 +1,56 @@
+package com.kh.controller;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ * Servlet implementation class ElServlet
+ */
+@WebServlet("/el.do")
+public class ElServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public ElServlet() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		/*
+		 * * 데이터를 담을 수 있는 JSP 내장 객체 종류
+		 * 1. ServletContext (applictaion scope)
+		 * 		- 한 애플리케이션 당 단 1개만 존재하는 객체
+		 * 		- 이 영역에 데이터를 담으면 애플리케이션 전역에서 사용 가능
+		 * 		- 공유 범위가 큼 (jsp/servlet/java)
+		 * 2. HttpSession (session scope)
+		 * 		- 한 브라우저 당 1개 존재하는 객체 (크롬, Edge, 사파리, 파이어폭스 ....)
+		 * 		- 이 영역에 데이터를 담으면 jsp/servlet 단에서 사용 가능
+		 * 		- 공유 범위가 다소 제한적임 (java 단에서는 사용 불가)
+		 * 
+		 * 3. HttpServletRequest (request scope)
+		 * 		- 요청할 때마다 매번 생성되는 객체
+		 */
+		
+		
+		
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

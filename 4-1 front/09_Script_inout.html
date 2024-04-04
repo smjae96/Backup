@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Script 데이터 입출력</title>
+</head>
+<ㅔ>
+    <h1>1. 데이터를 출력하는 구문</h1>
+    <p>
+        1) [window.]alert("알림창에 출력할 문구"); <br>
+        2) [window.]console.log("콘솔창에 출력할 문구"); <br>
+        3) document.write("화면에 출력할 문구"); <br>
+        4) 선택한요소.innerHTML | .innerText = "요소에 출력할 문구";
+    </p>
+
+    <h3>3) document.write("화면상에 출력할 문구");</h3> <!-- 여러 줄 쓴다고 줄바꿈 안됨!-->
+    <button onclick="documentWrite();">화면에 출력하기</button>
+    <script>
+        function documentWrite() {
+            // 줄바꿈 시 <br> 태그 사용
+            document.write("화면에 출력하기<br>");
+            document.write("여러 줄 출력해보기<br>");
+            document.write("!@#~$@%#%");
+        }
+    </script>
+
+    <h3> 4) 선택한요소.innerHTML | 선택한요소.innerText = "요소에 출력할 문구";</h3>
+    <div id="area1" style="width:500px; height:300px; 
+                border:1px solid magenta;">변경 되기 전
+    </div>
+    <button onclick="printvalue()">변경하기(HTML)</button>
+    <button onclick="printvalue2()">변경하기(Text)</button>
+    <script>
+        function printvalue() {
+            // 요소 선택하기. id 속성이 area1 인 요소를 선택
+            let areaElement = document.getElementById("area1");
+            console.log(areaElement); // 내가 원하는 요소를 제대로 가져왔는지 확인!
+
+            areaElement.innerHTML = "<span style= color:red;><b>innerHTML을 사용하여"
+                                    + " 값을 변경<b></span>";
+        }
+        function printvalue2() {
+            let areaElement = document.getElementById("area1");
+
+            areaElement.innerText = "<br> innerText를 사용하여 값을 변경";
+            console.log(areaElement.style);
+            console.log(areaElement.style.cssText);
+            // 기존 스타일을 유지하면서 폰트색상을 변경
+            //areaElement.style = areaElement.style.cssText + "color:blue;"     
+            areaElement.style.color = "blue";
+        }
+    </script>
+    <br>
+    <hr>
+    <h1>2. 데이터를 입력받는 구문 (변수에 저장 가능)</h1>
+    <p>
+        1) 변수 = [window.]confirm("질문 내용"); <br>
+        2) 변수 = [window.]prompt("질문 내용"); <br>
+        3) 변수 = 선택한요소.속성(id, className, innerHTML, innerText, ..) <br>
+        4) 변수 = 선택한 input요소.value
+    </p>
+    <h3> 1) [window.]confirm("질문 내용"); </h3>
+    <p> confirm 사용 시 "질문 내용"과 "확인/취소" 버튼이 존재하는 알림창이 화면에 표시 </p>
+        확인버튼 클릭 시 true, 취소버튼 클릭 시 false를 반환
+    </p>
+    <h3> 2) [window.]prompt("질문 내용"); </h3>
+    <p>
+        prompt 사용 시 "질문 내용"과 입력할 수 있는 "텍스트 상자", "확인/취소" 버튼이 
+        존재하는 알림창이 화면에 표시
+        확인버튼 클릭 시 텍스트 상자에 입력된 내용을 문자열로 반환
+        취소버튼 클릭 시 null로 반환
+    </p> 
+    <br>
+    아이디: <input type="text" id="userId"  /> <br>
+    비밀번호: <input type="password" id="userPw" /><br>
+    <button onclick="inputTest()">로그인</button><br>
+    <input type="text" id="result" readonly>  <!-- readonly : 사용자의 입력 제한 속성 -->
+    <script>
+        function inputTest() {
+            /*
+                3) 변수 = 선택한요소.속성
+                4) 변수 = 선택한input요소.value
+            */
+            // userId라는 id 속성을 가진 요소의 id값을 가져오기
+            let userId = document.getElementById("userId")
+            console.log(userId.id);     // userId
+            // userId 라는 id 속성을 가진 input요소의 값을 가져오기
+            console.log(userId.value);
+
+            // userPw라는 id 속성을 가진 input요소의 값을 가져오기
+            let userPw = document.getElementById("userPw");
+            console.log(userPw.value);
+           //console.log(document.getElementById("userPw").value);
+
+           document.getElementById("result").value = userId.value +", "+ userPw.value
+           userId.value = "";
+           userPw.value = "";
+        }
+    </script>
+</body>
+</html>

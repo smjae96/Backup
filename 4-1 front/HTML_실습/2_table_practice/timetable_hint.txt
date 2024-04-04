@@ -1,0 +1,17 @@
+* 열에 공통적인 스타일을 적용할 때 <colgroup> 과 <col> 사용하여 적용 가능
+<tr>
+	<colgroup>
+		<col style="color:red;">
+		<col>
+	</colgroup>
+</tr>
+<tr>
+	<td>빨강</td>
+	<td>검정</td>
+</tr>
+
+* 세번째 열 스타일 내용 : background-color:#97DB9A;
+* 네번째 열 스타일 내용 : width: 42px;
+* 다섯번째 열 스타일 내용 : background-color: #97DB9A;
+* 여섯번째 열 스타일 내용 : background-color:#DCC48E; border:4px solid #C1437A;
+* 마지막 열 스타일 내용 : width: 42px;

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Script 요소에 접근하기</title>
+</head>
+<body>
+    <h1>HTML요소에 접근하기(해당 요소 객체 가져오기)</h1>
+    
+    <h3>1) 아이디를 이용해서 요소 가져오기</h3>
+    <button onclick="accessById()">아이디로 접근</button>
+    <div id="area1"></div>
+    <script>
+        function accessById() {
+            // 아이디로 요소에 접근할 때,
+            // document.getElementById("아이디명"); => 선택한 요소 객체 반환
+            let area1 = document.getElementById("area1");
+
+            // 선택한 요소에 HTML형식의 데이터를 출력
+            area1.innerHTML += "아이디로 접근 성공!! <br>";
+            // area1.innerHTML = area1.innerHTML + "아이디로 접근 성공!! <br>"
+            
+            // 선택한 요소에 스타일 변경
+            // 선택한요소.style.스타일속성
+            area1.style.background = "yellow";
+            area1.style.color = "red";
+            area1.style.width = "200px";
+            area1.style.height = "200px";
+        }
+    </script>
+
+    <h3>2) 클래스를 이용해서 요소 가져오기</h3>
+    <div>
+        <ul>
+            <li class="list-item">아이템 1</li>
+            <li class="list-item">아이템 2</li>
+            <li class="list-item">아이템 3</li>            
+        </ul>
+    </div>
+    <button onclick="changeBackground()">배경색 바꾸기</button>
+
+    <script>
+        function changeBackground() {
+            // 클래스로 요소를 가져올 때
+            // document.getElementsByClassName("클래스명"); 
+            // => 선택한 클래스에 해당하는 요소 객체배열을 반환
+            let item = document.getElementsByClassName("list-item")
+            
+            // 배경색을 pink와 magenta를 번갈아가며 바꾸도록 처리
+            for(let i=0; i<item.length; i++) {
+                console.log(item[i].style.background);
+                if (item[i].style.background != "pink") {
+                    item[i].style.background = "pink";
+                } else {
+                    item[i].style.background = "magenta";
+                }
+                
+            }
+
+            // for(let i in item) {
+            //     if (item[i].style.background != "pink") {
+            //         item[i].style.background = "pink";
+            //     } else {
+            //         item[i].style.background = "magenta";
+            //     }
+            // }
+
+            // item[0].style.background = "blue";
+            // item[1].style.background = "red";
+            // item[2].style.background = "yellow";
+
+        }
+    </script>
+    
+    <h3>3) 태그명을 이용하여 요소 가져오기</h3>
+    <button onclick="changeItemValue()">태그명으로 접근</button>
+
+    <script>
+        function changeItemValue() {
+            // 태그명으로 접근할 때
+            // document.getElementsByTagName("태그명")
+            //  => 선택한 태그에 해당하는 요소 객체배열 반환
+            let list= document.getElementsByTagName("li");
+
+            console.log(list);
+            console.log("리스트의 길이 : " + list.length);
+            console.log("첫번째 리스트요소 : " + list[0]);
+            console.log(list[0]);
+
+            // for(let i=0; i<list.length; i++) {
+            //     list[i].innerText = i+ "번째 li 요소";
+            // }
+
+            // const obj = { a: 1, b:2, c:3};
+            // for(const key in obj) {
+            //     console.log('key: ' + key + ', value: ' + obj[key]);
+            // }    
+
+            // const array = ['a','b','c'];
+            // for(const key in array) {
+            //     console.log('key: ' + key + ', value: ' + obj[key]);
+            // } 
+
+            // console.log(list);
+                let j = 0;
+            for(let i of list) {
+                i.innerText = j+"번째 li 요소";
+                if(j==1) {
+                    list[j].style.background = "lightgray";
+                } else {
+                    list[j].style.background = "red";
+                }
+                
+                j++;
+            }
+                // if(i==1) {
+                //     list[i].style.background = "lightgray";
+                // } else {
+                //     list[i].style.background = "red";
+                // }
+                
+            // }
+
+        }
+    </script>
+
+    <h3>4) name속성을 이용하여 요소 가져오기 </h3>
+    <form>
+        <!-- fieldset : form태그 내에서 영역을 나누어 표시할 때 사용 태그 -->
+        <fieldset>
+            <!-- legend : 나눈 영역에 의미하는 제목을 표시하는 태그 -->
+            <legend>취미</legend>
+            <input type="checkbox" id="total" name="hobby" value="전체선택" onchange="changeTotal()">
+            <label for="total">전체선택</label>
+
+            <input type="checkbox" id="game" name="hobby" value="게임" 
+                    onchange="checkBoxTrigger()">
+            <label for="game">게임</label>
+
+            <input type="checkbox" id="netflix" name="hobby" value="넷플릭스보기"
+                    onchange="checkBoxTrigger()">
+            <label for="netflix">넷플릭스 보기</label>
+            
+            <input type="checkbox" id="mountain" name="hobby" value="등산"
+                    onchange="checkBoxTrigger()">
+            <label for="mountain">등산하기</label>
+        </fieldset>
+    </form>
+
+    <script>
+        function changeTotal() {
+            // 전체선택 체크박스 요소 가져오기 => id 속성으로 가져오기!
+            let totalChk = document.getElementById("total");
+            console.log(totalChk.checked); // 체크된 상태에서는 true, 체크 해제된 상태에서는 false 반환.
+            
+            // 전체선택 체크박스의 변화에 따라 모든 체크박스 상태를 바꾸고자 할 때
+            let allCheckBox = document.getElementsByName("hobby");
+
+            // foreach문과 동일하게 동작하는 방식
+            for(let checkbox of allCheckBox) {
+                checkbox.checked = totalChk.checked;
+            }
+        }
+        function checkBoxTrigger() {
+            let allChecked = true;
+            let hobbyList = document.getElementsByName("hobby");
+
+            for(let hobby of hobbyList) {
+                // 체크박스 중에 체크해제가 된 항목이 있을 경우
+                if(!hobby.checked) {
+                    // allChecked 변수의 값을 false로 변경
+                    allChecked = false;
+                }
+            }
+
+            // for(let i=0; i<hobbyList.length; i++) {
+            //     if(!hobbyList[i].checked) {
+            //         allChecked = false;
+            //     }
+            // }
+
+            // if(hobbyList[0].checked && hobbyList[1].checked && hobbyList[2].checked) {
+            //         allChecked = true;
+            // }
+
+            let totalChk = document.getElementById("total");
+            totalChk.checked = allChecked;
+        }
+    </script>
+    
+    <h3>5) 원하는 요소를 자유자재로 가져오기 (선택자 활용)</h3>
+    <div id="test1">테스트 영역</div>
+    <div class="test2">
+        <h2>2024-02-16</h2>
+        <h2>금요일</h2>
+    </div>
+    <span>@@@@@@@@@@@@</span>
+    <h2>곧 점심입니다.</h2>
+    <br>
+    <button onclick="accessElements()">선택자 활용하여 접근</button>
+    <script>
+        function accessElements() {
+            /*
+                선택자를 활용하여 요소에 접근할 때
+                    document.querySelector("선택자") => 선택된 요소 하나만 반환
+                    document.querySelectorAll("선택자") => 선택된 요소 객체배열을 반환
+            */
+           const divT1 = document.querySelector("#test1");
+           // 요소가 가지고 있는 컨텐츠 내용 조회(확인)
+           console.log(divT1.innerText);
+           console.dir(divT1.innerHTML);
+
+           const divT2H2 = document.querySelectorAll(".test2 h2");
+           for(let h2 of divT2H2) {
+            console.log(h2.innerHTML);
+           }
+
+           const divT2span = document.querySelectorAll(".test2+span");
+           for(let h3 of divT2span) {
+            console.log(h3.innerHTML);
+           }
+
+            // const divT2span = document.querySelector(".test2+span");
+            // console.log(divT2span.innerHTML);
+           
+        }
+    </script>
+</body>
+</html>

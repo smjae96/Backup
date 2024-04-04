@@ -1,0 +1,14 @@
+package codewars_0403.sol;
+
+public class PangramChecker {
+	public boolean check(String sentence) {
+		sentence = sentence.toLowerCase().replace(" ", "");
+		
+		char[] arr = sentence.toCharArray();
+		for(char ch='a'; ch<='z'; ch++) {
+			for(int i=0; i<arr.length; i++) {
+				
+			}
+		}
+	}
+}

@@ -1,0 +1,4 @@
+.login-area { display: flex; justify-content: center;}
+
+/* flex 영역 안에 있는 요소들을 세로로 나열 */
+.input-area { display: flex; flex-direction: column;}

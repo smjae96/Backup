@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp</title>
+</head>
+<style>
+    body {
+
+        margin: 5%;
+        background-color: rgb(248, 213, 219);
+    }
+
+    main {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: rgb(248, 213, 219)
+        
+        
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+    }
+    h1 {
+        color: white;  text-shadow: 4px 4px 4px rgb(248, 138, 156)
+    }
+    fieldset {
+        border: 5px solid rgb(241, 105, 127);
+        width: 100%;
+        border-radius: 20px;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+    }
+    table {
+        width: 100%;
+    }
+   
+    td {
+        width: 50%;
+        padding-bottom: 4%;
+        padding-top: 4%;
+    }
+    .inputbox {
+        height: 50px;
+        border: 1px solid rgb(241, 105, 127);
+        border-radius: 20px;
+        width: 300px;
+    }
+   
+    #join {
+        width: 400px;
+        height: 50px;
+        margin: 40px;
+        border-radius: 30px;
+        border: 1px solid;
+        color: white;
+        font-size: 20px;
+        font-weight: 900;
+        background-color: rgb(248, 138, 156);
+        border-color: rgb(248, 138, 156);
+        box-shadow: 4px 4px 4px rgb(235, 111, 132);
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <main>
+        <form action="/Practice01/signin.do" method="GET" name="signUpForm">
+            <h1>Happy Day</h1>
+            <fieldset>
+                <table>
+                    <tr>
+                        <td>아이디</td>
+                        <td><input type="text" name="userId" class="inputbox" required></td>
+                    </tr>
+                    <tr>
+                        <td>비밀번호</td>
+                        <td><input type="password" name="userPw" id="pw" class="inputbox" required ></td>
+                    </tr>
+                    <tr>
+                        <td>비밀번호 확인</td>
+                        <td><input type="password" name="userPwCheck" id="pw2" class="inputbox" required ></td>
+                    </tr>
+                    <tr>
+                        <td>이름</td>
+                        <td><input type="name" name="name" class="inputbox"></td>
+                    </tr>
+                    <tr>
+                        <td>연락처</td>
+                        <td><input type="phone" name="phone" class="inputbox"></td>
+                    </tr>
+                </table>
+            </fieldset>
+            <button type="submit" id="join" value="가입하기" onclick="pwFail(event)">가입하기</button>
+            
+        </form>
+    </main>
+</body>
+<script>
+
+	const pwFail = (event) => {
+		event.preventDefault();
+		
+		let pw = document.getElementById("pw").value;
+	    let pw2 = documetn.getElementById("pw2").value;
+	    
+	    if(pw === pw2) {
+	    	document.
+	    }
+	}
+    
+    
+    function pwFail() {
+        if(pw.value != pw2.value) {
+            alert("비밀번호가 일치하지 않습니다!");
+            return false;
+        } else {
+            return true;
+        }
+    }
+</script>
+</html>

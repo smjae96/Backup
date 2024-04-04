@@ -1,0 +1,7 @@
+package codewars_0328.sol;
+
+public class MaximumSubarray {
+	public static int sequence(int[] arr) {
+		return 4;
+	}
+}

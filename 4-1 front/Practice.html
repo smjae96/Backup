@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+    <script src="js/practice.js"></script>
+</head>
+<body>
+    <button id="btn">콘솔창 출력</button>
+    <button id="btn" onclick="abc()";>알림창 출력</button>
+    <script>
+        let btn = document.getElementById("btn");
+        btn.onclick=function() {
+            console.log("내부방식으로 콘솔창에 출력")
+            abc();
+        };
+
+        function abc() {
+            alert("abc함수 호출됨");
+        }
+    </script>
+    <button onclick = "test();">알림창 출력</button>
+    <br><hr>
+    <button onclick = "documentWrite();">화면에 출력</button>
+    <br><hr>
+    <br>
+    <div class="area" id="area1">
+        <b>innerHTML, innerText</b>
+    </div>
+    <button onclick="tagValue();">확인</button>
+    <br><br><br>
+    <button onclick="question2();">질문버튼2</button>
+    <div id="area1"></div>
+    <br><hr><br>
+    <input type="text" placeholder="아이디를 입력하세요." id="userId">
+    <button onclick="idCheck();">아이디 중복확인</button><br>
+    <div id="idCheck"></div>
+    <br>
+    <hr>
+    <br>
+    <button onclick="arrayTest1()">배열 확인</button>
+    <div id="area1" class="area small"></div>
+    <br>
+    <hr>
+    <br>
+    <button onclick="arrayTest2()">배열 확인2</button>
+    <hr>
+    <br>
+    <button onclick="indexOfTest()">indexOf 테스트</button>
+    <div id="indexOf" class="indexOf small"></div>
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Script 객체(2)</title>
+    <style>
+        .area {
+            border: 2px solid palegreen;
+            background-color: skyblue;
+            height: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>* 객체 배열을 사용한 다량의 데이터 관리</h3>
+    <button onclick="test6()">실행</button>
+    <div class="area" id="area6"></div>
+    <script>
+        function test6() {
+            const person0 = { name: "이오재", age: 31, gender: "남" };
+            const person1 = { name: "박미진", age: 29, gender: "여" };
+            const person2 = { name: "류연우", age: 29, gender: "남" };
+            const person3 = { name: "이진호", age: 30, gender: "남" };
+            const person4 = { name: "이동협", age: 28, gender: "남" };
+
+            const personArr = [];
+            personArr.push(person0);
+            personArr.push(person1);
+            personArr.push(person2);
+            personArr.push(person3);
+            personArr.push(person4);
+
+            console.log(personArr);
+            //..
+            console.log(personArr[0]);
+            console.log(personArr[1]);
+            //..
+            // 배열 내의 데이터를 하나씩 출력
+            // for(let i=0; i<personArr.length; i++) {
+            //     console.log(personArr[i]);
+            // }
+            for (let person of personArr) {
+                console.log(person.name);
+            }
+            // 배열 내의 각 객체에 점수(point) 속성을 추가
+            for (let person of personArr) {
+                person.point = 0;
+            }
+            console.log(personArr);
+            // 각 객체에 toString() 메소드를 추가
+            for (let person of personArr) {
+                person.toString = function () {
+                    return `name: ${this.name}, age: ${this.age}, gender: ${this.gender}, point: ${this.point} <br>`;
+                    // return "name: " +this.name + ", age : " + this.age
+                    // + ", gender: " + this.gender + ", point : " + this.point + "<br>";
+                }
+            }
+
+            // div 영역에 배열 내의 각 객체 내용을 출력
+            // document.getElementById("area6").innerHTML = personArr;
+
+            for (let person of personArr) {
+                document.getElementById("area6").innerHTML += person;
+            }
+
+        }
+    </script>
+    <hr>
+    <h3> * 생성자 함수 </h3>
+    <p>
+        new 키워드를 통해서 객체를 생성할 수 있는 함수를 의미
+        (함수명 부분의 첫글자를 대문자로 작성)
+    </p>
+    <button onclick="test7()">실행</button>
+    <div class="area" id="area7"></div>
+    <script>
+        // 사람 객체에 대한 생성자 함수
+        function Person(name, age, gender, point) {
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            this.point = point;
+
+            this.toString = function () {
+                return `name: ${this.name}, age: ${this.age}, gender: ${this.gender}, point: ${this.point} <br>`;
+            }
+        }
+
+        function test7() {
+            const person0 = new Person("이오재", 31, "남", 0);
+            // {name: "이오재", age: 31, gender: "남", point: 0}
+            const person1 = new Person("홍길동", 40, "남", 100);
+
+            document.getElementById("area7").innerHTML = person0;
+            document.getElementById("area7").innerHTML += person1;
+        }
+    </script>
+    <hr>
+    <h3>* Date 내장객체</h3>
+    <p>
+        날짜/시간 관련 내장객체
+    </p>
+    <button onclick="test8()">실행</button>
+    <div class="area" id="area8"></div>
+    <script>
+        function test8() {
+            const area8 = document.getElementById("area8");
+
+            // 현재 날짜 및 시간
+            const date1 = new Date();
+            area8.innerHTML = "현재 날짜 및 시간: " + date1.getTime() + "<br>";
+
+            // 2024년 2월 21일 날짜로 설정
+            const date2 = new Date(2024, 2 - 1, 21);  // Date(연도, 월-1, 일);
+            area8.innerHTML += "2024년 2월 21일로 설정: " + date2.getTime() + "<br>";
+
+            // 종강일 : 2024년 6월 4일 18시 00분 00초로 설정 // Date(연도, 월-1, 일, 시, 분, 초);
+            const date3 = new Date(2024, 6 - 1, 4, 18, 0, 0);
+            area8.innerHTML += "종강일: " + date3.getTime() + "<br>";
+
+            /*
+                [참고]
+                    - 1s == 1000ms
+                    - 5s == 5000ms
+            */
+
+            area8.innerHTML += "현재 : " + date1 + "<br>";
+            area8.innerHTML += "현재(2) : " + date2 + "<br>";
+            area8.innerHTML += "종강일 : " + date3 + "<br>";
+
+            /*
+                - 연도 : getFullYear()
+                - 월   : getMonth() (+ 1)
+                - 일   : getDate()
+                - 요일 : getDay()
+                - 시   : getHours()
+                - 분   : getMinutes()
+                - 초   : getSeconds()
+            */
+            // 종강일에 해당하는 Date 객체를 기준으로 div 영역에 내용을 출력
+
+            // (2) 요일에 해당 배열을 선언
+            const days = ["일", "월", "화", "수", "목", "금", "토"];
+            // days[date3.getDay()]로 사용 할 수도 있음!
+
+            area8.innerHTML += "종강일 : " + date3.getFullYear() + "년, "
+                + (date3.getMonth() + 1) + "월, " + date3.getDate() + "일, "
+                + getDayText(date3.getDay()) + "요일, " + date3.getHours() + "시, "
+                + date3.getMinutes() + "분, " + date3.getSeconds() + "초";
+
+            // (1) 함수 사용하여 요일 데이터 변환 
+            function getDayText(day) {
+                switch (day) {
+                    case 0:
+                        return "일";
+                    case 1:
+                        return "월";
+                    case 2:
+                        return "화";
+                    case 3:
+                        return "수";
+                    case 4:
+                        return "목";
+                    case 5:
+                        return "금";
+                    case 6:
+                        return "토";
+                }
+            }
+
+        // 종강일까지 몇일 남았는지.
+        let dDay = Math.floor((date3 - date1) / (24 * 60 * 60 * 1000));
+        area8.innerHTML += "<br>D-day : " + dDay + "일";
+        }
+
+
+
+    </script>
+
+   <hr>
+   
+    
+</body>
+
+</html>

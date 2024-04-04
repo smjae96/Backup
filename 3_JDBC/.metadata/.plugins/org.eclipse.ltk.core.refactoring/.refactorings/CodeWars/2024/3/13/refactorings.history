@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;codewars_0328.sol&apos; to &apos;codewars_0329.sol&apos;&#x0D;&#x0A;- Original project: &apos;CodeWars&apos;&#x0D;&#x0A;- Original element: &apos;CodeWars/src/codewars_0328.sol&apos;&#x0D;&#x0A;- Renamed element: &apos;CodeWars/src/codewars_0329.sol&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;codewars_0328.sol&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src&lt;codewars_0328.sol" name="codewars_0329.sol" qualified="false" references="true" stamp="1711699506052" textual="false" version="1.0"/>
+</session>

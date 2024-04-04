@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid Layout Page</title>
+
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; /* fr */
+            column-gap: 10px;
+            background-color: #efefef;
+            padding: 30px;
+            height: 500px;
+        }
+         .grid-container div{ background-color: orange; }
+
+         div.item5 {background-color: violet;} /* 우선순위에서 밀려서 그냥 item5로는 색이 변하지 않음.*/
+    </style>
+</head>
+<body>
+    <!-- grid-template-columns : 그리드 내의 아이템(컬럼)의 크기를 설정하는 스타일 속성 -->
+    <div style="display:grid; grid-template-columns: 100px 100px 100px;">
+        <div style="background-color: firebrick;"> Div 1 </div>
+        <div style="background-color: lightskyblue;"> Div 2 </div>
+        <div style="background-color: seagreen;"> Div 3 </div>
+    </div>
+    <br>
+    <!-- column-gap : 그리드 내 아이템(컬럼)들 간의 간격을 설정하는 스타일 속성 -->
+    <div style="display:grid; grid-template-columns: 100px 100px 100px;
+                column-gap: 10px;">
+        <div style="background-color: firebrick;"> Div 1 </div>
+        <div style="background-color: lightskyblue;"> Div 2 </div>
+        <div style="background-color: seagreen;"> Div 3 </div>
+    </div>
+    <br>
+    <hr>
+    <div class="grid-container">
+        <div class="item1"> div1 </div>
+        <div class="item2"> div2 </div>
+        <div class="item3"> div3 </div>
+        <div class="item4"> div4 </div>
+        <div class="item5"> div5 </div>
+        <div class="item6"> div6 </div>
+        <div class="item7"> div7 </div>
+        <div class="item8"> div8 </div>
+    </div>
+</body>
+</html>

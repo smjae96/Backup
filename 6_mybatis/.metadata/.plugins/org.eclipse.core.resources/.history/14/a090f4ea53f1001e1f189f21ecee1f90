@@ -1,0 +1,8 @@
+package com.kh.mybatis.member.service;
+
+import org.apache.ibatis.annotations.Insert;
+
+public interface MemberService {
+
+	@Insert
+}

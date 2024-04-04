@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS_Layout_page</title>
+    <style>
+        span{background-color: blue; color: white; height: 150px; }
+        /* display: 배치 방식을 변경할 수 있는 스타일 속성 
+            - block : 블록 레벨 요소로 변경
+            - inline : 인라인 레벨 요소로 변경 (margin, height, width 설정이 잘 적용되지 않음)
+            - inline-block : 인라인 레벨이면서, 내용 부분이 블록 레벨처럼 설정    
+        */
+        span.d-block {display: block; background-color: aqua; height: 150px;}
+        span.d-inline-block {display: inline-block; height: 150px; background-color: magenta;}
+        /* 테두리 스타일
+            - border-style : 테두리 스타일 (solid-실선, dotted- 점선, double- 두줄)
+            - border-color : 테두리 색상
+            - border-width : 테두리 두께
+           
+            - border: border-width border-style border-color  --> border:로 한번에 작성 시.
+
+        */
+        .b-style {border-style: solid; border-color: black; border-width: 2px;}
+        .b-style2 {border:2px solid red; 
+                   border-radius: 20px 10px;
+                   box-shadow: 3px 3px 10px 1px darkgray; }
+        /*
+            - border-radius : 테두리를 둥글게 하는 스타일
+                - border-radius: 10px;
+                - border-radius : top-left top-right bottom-left bottom-right;
+                - border-radius : top-left/bottom-right top-right/bottom-left;
+        */
+        /*
+            box-shadow : 박스 영역에 그림자를 추가하는 스타일
+               - box-shadow: 수평거리 수직거리 흐림정도 번짐정도 색상 [inset];
+                    * inset : 안쪽으로 그림자를 그릴 때 사용하는 옵션
+        */
+        /* --------------------------------------------------------------------- */
+        /*
+            * margin: 요소(태그)들 간의 간격을 조절하는 스타일 속성
+            * padding: 테두리 부분과 콘텐츠(내용) 부분 사이의 간격을 조절하는 스타일 속성
+
+            -> margin/padding: all;
+               margin/padding: top right bottom left;
+               margin/padding: top/bottom right/left;
+        */
+        div { background-color: skyblue;}
+        #area-A {background-color: darkred; padding: 10px 50px; margin: 35px; }
+        /* ------------------------------------------------------------------------ */
+        /*
+            포지션 관련 스타일
+            - position : top/left/bottom/right 기준으로 위치를 지정
+                * static : 기본값. 
+                * relative : 이전 요소와 연결해서 배치.
+                * absolute : 원하는 위치에 배치. 부모 요소가 poition 속성이 relative여야 잘 적용됨.
+                * fixed : 지정한 위치 고정 배치.
+            - top (상단 위치), left (왼쪽 위치), right (오른쪽 위치), bottom(하단 위치)
+        */
+        #ps-style {position: relative;}
+        #ps-style span {position: absolute; top:10px; left: 10px; }
+        #ps-style p {position: fixed; top: 30px; right: 50px; visibility: hidden;}
+        /*
+            요소를 숨기거나 표시하는 스타일
+            - visibility : 특정 요소를 화면에 표시하거나 숨기는 스타일
+                * visible : 화면에 표시
+                * hidden : 화면에서 숨기는 스타일. 이벤트가 적용되지 않지만, 해당 위치에서는 공간을 차지.
+        */
+        /*
+           z-indx: 요소들을 겹쳐서 표시하는 스타일 속성
+                * 숫자로 속성값을 입력하고, 제일 위에 표시하고자 하는 요소에 큰 값을 적용
+        */
+        #indexArea span{display:inline-block; width: 100px; height: 100px;
+                        position:fixed; bottom:0;
+                       }
+        #indexArea span:first-child {border: 2px solid red; z-index: 999;}
+        #indexArea span:nth-child(2) {left: 50px; border: 2px solid #efefef50; z-index: 2;}
+        #indexArea span:last-child {left: 100px; border:2px solid rgba(200, 100, 80, 0.5);}
+        /*
+            float : 요소를 페이지 내에서 왼쪽이나 오른쪽으로 배치
+                * right : 오른쪽에 배치
+                * left  : 왼쪽에 배치
+                * none  : 설정 없음
+        */
+        .f-right {float: right;}
+        /*
+            clear : 페이지에 float 설정이 되어 있을 때 그 속성 다음 요소에 영향을 미치지 않도록 처리하는 스타일
+                * right : 오른쪽 배치 취소
+                * left  : 왼쪽 배치 취소
+                * both  : 양쪽 다 취소
+                * none  : 설정 없음
+        */
+    </style>
+</head>
+<body>
+    <div id="ps-style">
+        <span>포지션A</span>
+        <p>포지션B</p>
+    </div>
+    <hr>
+    <div>
+        <div id="area-A">영역 A</div>
+        <div id="area-B">영역 B</div>
+    </div>
+    <hr>
+    <!--
+        블록/인라인 요소
+            * 블록 레벨: 가로 한 줄 전체를 차지하는 요소
+                        <div>, <p>, <ul>, <ol>, <table>, ...
+            * 인라인 레벨: 태그 내의 내용만큼만 차지하는 요소
+                          <span>, <img>, <input>, <button>, ...
+    --> <!-- 클래스는 여러 개 사용하고 싶을 시 한 칸 뛰고 여러 개 작성 가능.-->
+    <span class="d-block b-style">인라인 요소를 블록 요소로 변경</span>
+    <span class="b-style">인라인 요소</span>
+    <span class="d-inline-block b-style2 f-right">인라인 블록 요소</span>
+    <hr>
+    <div id="indexArea">
+        <span>요소 1</span>
+        <span>요소 2</span>
+        <span>요소 3</span>
+    </div>
+</body>
+</html>

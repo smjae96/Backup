@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제</title>
+    <style>
+        input {
+            height: 26px;
+            width: 190px;
+        }
+
+        tr,
+        th {
+            border: 2px solid lightgray;
+        }
+
+        input,
+        table {
+
+            border: 2px solid gray;
+        }
+
+        .but {
+            width: 40px;
+
+        }
+
+        #zero {
+            width: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Practice2-2</h1>
+
+    <table>
+        <tr>
+            <td colspan="4"><input type="text" name="result" id="result" readonly></td>
+        </tr>
+        <tr>
+            <th><button onclick="calculate('C')" class="but" id="C">C</button></th>
+            <th><button onclick="calculate('bs')" class="but" id="bs">bs</button></th>
+            <th><button onclick="calculate('%')" class="but" id="%">%</button></th>
+            <th><button onclick="calculate('/')" class="but" id="/">/</button></th>
+        </tr>
+        <tr>
+            <th><button onclick="calculate(7)" class="but" id="7">7</button></th>
+            <th><button onclick="calculate(8)" class="but" id="8">8</button></th>
+            <th><button onclick="calculate(9)" class="but" id="9">9</button></th>
+            <th><button onclick="calculate('*')" class="but" id="X">*</button></th>
+        </tr>
+        <tr>
+            <th><button onclick="calculate(4)" class="but" id="4">4</button></th>
+            <th><button onclick="calculate(5)" class="but" id="5">5</button></th>
+            <th><button onclick="calculate(6)" class="but" id="6">6</button></th>
+            <th><button onclick="calculate('-')" class="but" id="-">-</button></th>
+        </tr>
+        <tr>
+            <th><button onclick="calculate(1)" class="but" id="1">1</button></th>
+            <th><button onclick="calculate(2)" class="but" id="2">2</button></th>
+            <th><button onclick="calculate(3)" class="but" id="3">3</button></th>
+            <th><button onclick="calculate('+')" class="but" id="+">+</button></th>
+        </tr>
+        <tr>
+            <th colspan="2"><button onclick="calculate(0)" id="zero">0</button></th>
+            <th><button onclick="calculate('.')" class="but" id=".">.</button></th>
+            <th><button onclick="calculate('=')" class="but" id="=">=</button></th>
+        </tr>
+    </table>
+    <!-- <input type="hidden" id="isResult" value="false"> -->
+
+    <script>
+        // let isResult = false;
+        // if (isResult == true) {
+        //             cal.value = value;
+        //             isResult = false;
+        //         } else {
+        //             cal.value += value;
+        //         }
+        function calculate(value) {
+            let cal = document.getElementById("result")
+            let endChar = cal.value.slice(cal.value.length - 1);
+            let arr = ['+', '-', '*', '/', '%', '='];
+            //    const isResult = document.getElementById("isResult");
+            // console.log(value);
+            // console.log(cal.value);
+            
+            if (value == 'C') {
+                cal.value = "";
+            } else if (value == 'bs') {
+                cal.value = cal.value.slice(0, -1);
+            } else {
+                
+                // 처음값이 연산자일때
+                // alert("처음은 연산자가 나올 수 없습니다.")
+                if ((value == '*' || value == '/' || value == '%' || value == '=') && cal.value == "") {
+                    alert("처음은 연산자가 나올 수 없습니다.")
+                    cal.value = "";
+                    
+                }
+                // 연산자가 두개 연속일때
+                // value = 연산자일때 && calc.value 마지막값이 연산자일때
+                // alert
+                // arr = [1,2,3]
+                // arr.indexOf(1)
+                 
+                else if ((arr.indexOf(value) != -1) &&  arr.indexOf(endChar) != -1) 
+                {       
+                    // console.log(value);
+                    // console.log(cal.value);
+                    // console.log(cal.value.slice(cal.value.length-1));
+                
+
+                        alert("연산자는 두 개 연속 나올 수 없습니다.");
+                        
+                  
+
+                }
+                else if(value== '.' && cal.value.indexOf('.') != -1) {
+                    alert("소수점은 두 개 이상 쓸 수 없습니다.")
+                }
+                // 연산자로 끝난상태에서 = 입력시
+                // alert 
+                // else if ((endChar == '+' || endChar == '-'
+                //     || endChar == '*' || endChar == '/'
+                //     || endChar == '%' || endChar == '=')) {
+
+                //     if (value == '=') {
+                //         alert("계산할 수 없습니다. 식을 완성시켜 주세요!")
+                //         cal.value = "";
+                //     }
+                // }
+                else {
+                // else 
+                    if (value == '=') {
+                        cal.value = eval(cal.value.replace("=", ""));
+
+                    }
+                    else {
+                        cal.value += value;
+                    }
+                }
+                // cal.value 초기화
+                // 계산
+
+            }
+
+
+
+        }
+
+    </script>
+
+
+</body>
+
+</html>

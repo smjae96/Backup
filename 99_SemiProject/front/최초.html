@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>플래너 plan페이지</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://kit.fontawesome.com/eee69deb72.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            
+            margin: 50px;
+            background-color: #f7f7f7;
+        }
+
+
+        h1 {
+            color: #e91e63;
+            text-align: center;
+        }
+
+        #headerIcons {
+            text-align: right;
+            align-items: right;
+            gap: 10px;
+            margin-right: 100px;
+        }
+
+        #headerIcons button {
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+        }
+
+        label {
+            margin-top: 10px;
+            
+        }
+
+        input, textarea {
+            margin-top: 5px;
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: #e91e63;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #c2185b;
+        }
+
+        #plannerList {
+            margin-top: 20px;
+            align-items: center;
+            text-align: center;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .plannerItem {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .plannerDate {
+            color: #777;
+            margin-left: 643px;
+        }
+
+        .deleteButton {
+            color: #e91e63;
+            cursor: pointer;
+        }
+
+        .plannerDetails {
+            display: none;
+            padding: 10px;
+            background-color: #f0f0f0;
+        }
+
+        .showDetails {
+            display: block;
+        }
+
+
+
+
+    </style>
+     
+</head>
+<body>
+    <header>
+    <h1>플래너</h1>
+    <div id="headerIcons">
+        <button class="btn btn-light">
+            <i class="fas fa-cog"></i>
+        </button>
+        <button class="btn btn-light">
+            <i class="fas fa-user"></i>
+        </button>
+        <button class="btn btn-light">
+            <i class="fas fa-chart-bar"></i>
+        </button>
+    </div>
+    </header>
+    
+    
+    
+
+    <main>
+        
+        <form id="planner-form">
+            <label for="title">제목</label>
+            <input type="text" id="title" name="title" required>
+
+            <label for="startDate">시작 날짜</label>
+            <input type="date" id="startDate" name="startDate">
+
+            <label for="endDate">마감 날짜</label>
+            <input type="date" id="endDate" name="endDate">
+
+            <label for="description">내용</label>
+            <textarea id="description" name="description" rows="4" required></textarea>
+            <br>
+            <button id="save" type="button" onclick="submitPlanner()">저장</button>   
+        </form>
+        
+
+        <div id="plannerList">
+            <h2>저장된 플래너 리스트</h2>
+            <ul id="planners"></ul>
+        </div>
+    </main>
+
+    <script>
+        const planners = [];
+
+        function submitPlanner() {
+            const title = document.getElementById('title').value;
+            let startDate = document.getElementById('startDate').value;
+            let endDate = document.getElementById('endDate').value;
+            const description = document.getElementById('description').value;
+
+            if (!title) {
+                alert('제목을 입력해주세요!');
+                document.getElementById('title').focus();
+                return;
+            }
+
+            if (!startDate) {
+                startDate = getCurrentDate();
+            }
+
+            if (!endDate) {
+                endDate = getCurrentDate();
+            }
+
+            if (startDate > endDate) {
+                alert('마감 날짜를 다시 설정해주세요!');
+                return;
+            }
+
+            const planner = { title, startDate, endDate, description };
+            planners.push(planner);
+
+            updatePlannerList();
+
+            document.getElementById('title').value = '';
+            document.getElementById('startDate').value = '';
+            document.getElementById('endDate').value = '';
+            document.getElementById('description').value = '';
+        }
+
+        function togglePlannerDetails(index) {
+            const plannerDetails = document.querySelectorAll('.plannerDetails');
+            plannerDetails[index].classList.toggle('showDetails');
+        }
+
+        function deletePlanner(index) {
+            planners.splice(index, 1);
+            updatePlannerList();
+        }
+
+        function updatePlannerList() {
+            const plannersList = document.getElementById('planners');
+            plannersList.innerHTML = '';
+
+            planners.forEach((planner, index) => {
+                const listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <div class="plannerItem">
+                        <label>
+                            <strong>${planner.title}</strong>
+                            <span class="plannerDate">${formatDate(planner.endDate)}</span>
+                        </label>
+                        <span class="deleteButton" onclick="deletePlanner(${index})"><b>X</b></span>
+                    </div>`;
+                listItem.addEventListener('click', () => {
+                    togglePlannerDetails(index);
+                });
+                plannersList.appendChild(listItem);
+
+                const details = document.createElement('div');
+                details.classList.add('plannerDetails');
+                details.innerHTML = planner.description;
+                listItem.appendChild(details);
+            });
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const month = (date.getMonth() + 1).toString().padStart(2, '0');
+            const day = date.getDate().toString().padStart(2, '0');
+            return `${month}월 ${day}일`;
+        }
+
+        function getCurrentDate() {
+            const today = new Date();
+            const month = (today.getMonth() + 1).toString().padStart(2, '0');
+            const day = today.getDate().toString().padStart(2, '0');
+            return `${today.getFullYear()}-${month}-${day}`;
+        }
+
+    </script>
+</body>
+</html>

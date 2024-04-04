@@ -1,0 +1,16 @@
+header h2, footer {text-align: center;}
+header nav * {display:inline-block;}
+nav, footer {background-color: #abdee6; color:white; padding:10px 0px;}
+header ul, main ul {list-style-type: none; margin:0;padding:0;}
+header ul li {float:left; padding:20px;}
+header ul li:hover {background-color: aliceblue; color:#0dbea7; font-weight: bold;}
+
+ul a {color:white;text-decoration: none; }
+ul a:hover {color:#0dbea7;}
+
+main {display:grid; grid-template-columns: 1fr; background-color: whitesmoke;}
+main section {border: 1px solid whitesmoke;}
+#practice2 li {display:flex; margin:5px;}
+#practice2 li label {flex:1;}
+#practice2 li input {flex:5;}
+#practice2 button {float:right; margin-top: 10px; padding:20px; border:none; background-color: dodgerblue; color:aliceblue; font-weight: bold; font-size: 15px;}

@@ -1,0 +1,25 @@
+package codewars_0403.sol;
+
+import java.util.ArrayList;
+import java.util.regex.Pattern;
+
+public class PangramChecker {
+	public static boolean check(String sentence) {
+		Pattern alphabet = Pattern.compile("[a-zA-Z]");
+		System.out.println(sentence);
+		ArrayList<Character> list = new ArrayList<>();
+		if(sentence.length() < 26) {
+			return false;
+		}
+		for(int i=0; i<sentence.length(); i++) {
+			if(! list.contains(sentence.charAt(i))) {
+				list.add(sentence.charAt(i));
+			}
+		}
+		if(list.size() == 26) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+}

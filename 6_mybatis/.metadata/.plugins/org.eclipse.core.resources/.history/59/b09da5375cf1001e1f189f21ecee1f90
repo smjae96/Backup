@@ -1,0 +1,49 @@
+package com.kh.mybatis.member.service;
+
+import org.apache.ibatis.session.SqlSession;
+
+import com.kh.mybatis.member.model.dao.MemberDao;
+import com.kh.mybatis.member.model.vo.Member;
+import com.kh.mybatis.template.Template;
+
+public class MemberServiceImpl implements MemberService{
+	// 전역변수로 사용
+	private MemberDao mDao = new MemberDao();
+	@Override
+	public int insertMember(Member m) {
+		/* *기존 JDBC 방식
+		 * Connection conn = JDBCTemplate.getConnection();
+		 * int result = new MemberDao().insertMember(conn, m);
+		 * if (result >0) {
+		 * 		JDBCTemplate.commit(conn);
+		 * } else {
+		 * 		JDBCTemplate.rollback(conn);
+		 * }
+		 * 
+		 * JDBCTemplate.close(conn);
+		 * return result;
+		 */
+		SqlSession sqlSession = Template.getSqlSession();
+		mDao.insertMember(sqlSession, m);
+		
+	}
+
+	@Override
+	public Member loginMember(Member m) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int updateMember(Member m) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int deleteMember(String userId) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

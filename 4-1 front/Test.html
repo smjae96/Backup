@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous">
+    </script>
+</head>
+<body>
+    <script>
+        onload = function() {
+            const dog1 = new Animal("밀크", "푸들", 8, 5);
+            //console.log(dog1);
+            function Animal(name, type, age,weight) {
+            console.log("이름은 " +name+"이고, 종은"+type+"이고, "+age+"살이고, "+weight+"kg 입니다.")
+        
+        }
+        // const arr = ["일", "이", "삼", "사", "오"];
+        // for(let item of arr) {
+        //     console.log(item);
+        // }
+        }   
+    </script>
+    <button onclick="test1()">확인</button>
+    <div id="test1"></div>
+    <script>
+        function test1() {
+            let name = prompt("이름을 입력하시오!")
+            const regExp = /^[가-힣]+$/
+            if(name.length == 2 && regExp.test(name)) {
+                alert('안녕하세요.' +name+'님 반갑습니다.')
+            } else {
+                alert('잘못 입력하였습니다.')
+            }
+        }     
+    </script>
+    <p><a href="http://www.naver.com/" class="btn1">버튼1</a></p>
+	<p class="txt1">네이버</p>
+	
+	<p><a href="http://www.daum.net/" class="btn2">버튼2</a></p>
+	<p class="txt2">다음</p>
+	
+	<p><button class="btn3">버튼3</button></p>
+	<p class="txt3">내용3</p>
+
+    <script>
+        $(function () {
+            $(".btn1").on("click", function (e) {
+                e.preventDefault(); // 이벤트의 기본동작을 중지!
+                $(".txt1").css({"background-color" : "red"})
+            });
+
+            $(".btn2").on("click", function(e) {
+                $(".txt2").css({"background-color" : "green"});
+                return false;
+            })
+
+            $(".btn3").on("dblclick", function() {
+                $(".txt3").css({"background-color" : "blue"});
+            })
+        })
+    </script>
+    <p><button class="btn2">Hover</button></p>
+	<p class="txt2">내용2</p>
+    <script>
+        // hover()
+        $(".btn2").hover(
+            function() {
+                $(".txt2").css({ "background-color" : "aqua"});
+            },
+            function() {
+                $(".txt2").css({"background" : "none"});
+            }
+        );
+    </script>
+    
+</body>
+</html>

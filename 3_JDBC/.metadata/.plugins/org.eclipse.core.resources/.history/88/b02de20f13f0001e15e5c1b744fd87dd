@@ -1,0 +1,26 @@
+package codewars_0401.sol;
+
+public class Sum {
+	public static int GetSum(int a, int b) {
+		
+		
+		if(a<b) {
+			int i=0;
+			for(i=a; i==b; i++) {
+				i += i;
+			}
+			return i;
+		}
+		else if(a>b) {
+			int j=0;
+			for(j=b; j==a; j++) {
+				j += j;
+			}
+			return j;
+		}
+		else {
+			return a;
+		}
+		
+	}
+}

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>0221 Practice</title>
+</head>
+<body>
+    <h1>02월 21일 연습</h1>
+    <br><br>
+    <h2>Date 내장객체</h2>
+    <button onclick="test1()">실행확인</button>
+    <div id="area1" class="area"></div>
+    <script>
+        function test1() {
+            let area1 = document.getElementById("area1");
+
+            // 테스트용 Date 객체
+            // new Date 생성자 함수 호출
+            let date1 = new Date(); // 현재 날짜 및 시간
+            area1.innerHTML = "Date() : " +date1+ "<br>";
+            // 내부적으로 형식이 있는 toString()이 만들어져 있음.
+
+            // 원하는 날짜 설정
+            // 2024년 5월 28일로 세팅
+            let date2 = new Date(2024, 4-1, 28);
+            area1.innerHTML += "Date(년, 월, 일) : " + date2 + "<br>";
+            // 시, 분, 초는 자동으로 0으로 설정
+            // 월은 내부적으로 +1이 되므로 4로 써야 may가 나옴.
+            // 월 부분은 -1을 해주어야 함.
+
+            // 2024년 5월 28일에 시간까지 세팅하려면?
+            let date3 = new Date(2024, 4-1, 28, 17, 29, 30);
+            area1.innerHTML += "Date(년, 월, 일, 시, 분, 초) : " +date3 + "<br>";
+            
+            // 1초(s) == 1000밀리세컨초(ms)
+            // 밀리세컨초단위까지 세팅
+            let date4 = new Date(2024, 4-1, 28, 17, 29, 30, 5000);
+            area1.innerHTML += "Date(년, 월, 일, 시, 분, 초, 밀리초) : " + date4 + "<br>";
+            // 5000밀리세컨초가 초에 더해져서 35초로 나옴.
+
+            // 현재날짜 기준으로 년도, 월, 일, 요일 뽑아내기
+            area1.innerHTML += "년도 : " + date1.getFullYear() + "<br>";
+            area1.innerHTML += "월 : " + (date1.getMonth()+1) + "<br>";
+            // 그냥 date1.getMonth()로 쓰면 1월로 나오기 때문에 +1을 해줘야 2월로 나옴.
+            area1.innerHTML += "일 : " + date1.getDate() + "<br>";
+            area1.innerHTML += "요일 : " + date1.getDay() + "<br>";
+            // 숫자로 몇번째 요일인지 나옴. 일요일 = 0 기준으로!
+
+            // 추가적으로 시, 분, 초를 구하고 싶다면
+            // getHours(), getMinutes(), getSeconds()
+
+            // 종강일 D-day 구하기
+            let end = new Date(2024,5-1, 4);
+            let now = new Date();
+            area1.innerHTML += "종강일 D-day : " + (end-now) + "<br>";
+            // 현재 날짜로부터 종강일까지의 날짜를 밀리세컨초 단위로 알려줌.
+
+            // 단위환산
+            // 1s == 1000ms
+            // 1m == 60s == 60*1000ms
+            // 1h == 60m == 60*60s == 60*60*1000ms
+            // 1day == 24h == 24*60*60*1000ms
+            let dday = (end - now) / (24*60*60*1000);
+            area1.innerHTML += "종강일 D-day : " +Math.ceil(dday) + "일<br>";
+        }
+    </script>
+    <br><hr>
+    <h2>객체 속성 추가 및 제거</h2>
+    <button onclick="test2()">실행확인</button>
+    <div id="area2" class="area small"></div>
+    <script>
+        function test2() {
+            let area2 = document.getElementById("area2");
+
+            // 테스트용 빈 객체 생성
+            let student = {};
+            console.log(student); // {} : 빈 객체가 만들어진 것을 볼 수 있음.
+
+            // 빈 객체에 속성 추가
+            // 객체명.내가추가할속성명 = 값;
+            student.name = "심재윤";
+            student.hobby = ["코딩", "잠자기"];
+            student.dream = "프로그래머";
+            student.age = 29;
+
+            console.log(student);
+
+            student.age = 27;
+            console.log(student);
+            // 29에서 27로 바뀐 것을 볼 수 있다.
+            // 객체 내에 중복된 속성명이 존재 불가, 속성명을 중복 정의한 경우 덮어씌움.
+
+            //student.address = "서울";
+            with(student) {
+                address = "서울";
+            }
+            console.log(student.address); // undefined
+            // with키워드를 사용할 경우, 속성추가가 되지 않음(조회용으로 사용하기 때문)
+
+            // 이 시점에서 student의 속성명으로는 name, hobby, dream, age뿐이다.
+            area2.innerHTML = "student : " +student + "<br>"; // student : [object Object]
+
+            // 메소드 속성 추가(toString)
+            student.toString = function() {
+                let str = "name : " + this.name + "<br>"
+                        + "hobby : " + this.hobby + "<br>"
+                        + "dream : " + this.dream + "<br>"
+                        + "age : " + this.age + "<br>";
+
+                        return str;
+            };
+            area2.innerHTML += "student : " + student + "<br>";
+            // 메소드 속성도 추가 가능함.
+
+            // 객체로부터 속성을 제거
+            // delete(객체명.삭제하고싶은속성명);
+            delete(student.hobby);
+
+            area2.innerHTML += "student : " + student + "<br>";
+            // hobby : undefined로 바뀐 것을 확인 가능.
+
+            with(student) {
+                delete(age);
+            }
+            area2.innerHTML += "student : " + student + "<br>";
+            // age : undefined로 바뀜. with키워드 사용 시, 속성명 삭제가 가능하나 다만 조회용으로 많이 씀.
+        }
+    </script>
+    <br><hr>
+    <h2>객체배열</h2>
+    <button onclick="test3()">실행확인</button>
+    <div id="area3" class="area"></div>
+    <script>
+        function test3() {
+            let area3 = document.getElementById("area3");
+
+            // 테스트를 위한 학생 객체들 생성
+            let student0 = {name: "홍길동", java : 100, oracle : 90, html : 90, css: 60};
+            let student1 = {name: "홍길순", java : 60, oracle : 100, html : 80, css : 70};
+            let student2 = {name: "이순신", java : 70, oracle : 80, html : 100, css : 100};
+            let student3 = {name: "김개똥", java : 100, oracle : 100, html : 80, css : 90};
+
+            // 빈 학생 배열 생성
+            let students = [];
+
+            // push, pop 메소드
+            students.push(student0);
+            students.push(student1);
+            students.push(student2);
+            students.push(student3);
+
+            console.log(students);
+            console.log(students[0]);
+
+            // javascript 시험 후 점수추가 (속성추가)
+            // 총점, 평균
+            for (let i in students) {
+                students[i].javascript = 100;
+                // java, oracle, html, css, javascript
+                students[i].getSum = function() {
+                    return this.java + this.oracle + this.html + this.css + this.javascript
+                };
+                students[i].getAvg = function() {
+                    return this.getSum()/5;
+                }
+            }
+            console.log(students); // (4) [{...}, {...}, {...}, {...}] , 자바스크립트 점수까지 들어간 것 확인 가능.
+            for(let i in students) {
+                with(students[i]) {
+                    area3.innerHTML += "이름 : " + name+"<br>"
+                                       +"총점 : " + getSum()+ "<br>"
+                                       +"평균 : " + getAvg()+ "<br>"; 
+                }
+            }
+
+        }
+    </script>
+    <br><hr>
+    <h2>생성자 함수</h2>
+    <!-- new 키워드를 이용해서 객체를 생성할 수 있는 함수
+        - 호출시, new생성자함수명();
+        - 리턴값은 해당 객체를 통째로 완성해서 리턴해줌
+        - 함수명 제시시, 첫글자는 대문자로
+        - 자바에서의 클래스와 같은 역할 => 내가 앞으로 만들 객체의 틀을 정의
+    -->
+    <button onclick="test4()">실행확인</button>
+    <div id="area4" class="area"></div>
+
+    <script>
+        function test4() {
+            let area4 = document.getElementById("area4");
+
+            // 우선적으로, 학생들의 객체를 각각 만들어줌.
+            // => {}에 직접 작성
+            // => 통일성을 해쳐서 어떤 객체는 이 속성이 있고, 어떤 객체는 이 속성이 없고...
+            // => 이번에는 "생성자함수"를 이용하여 균일한 틀을 정의할 것임!
+            let student0 = new Student("홍길동", 100, 70, 90, 80, 30);
+            let student1 = new Student("김개똥", 80, 90, 100, 50, 70);
+            let student2 = new Student("홍길동", 70, 100, 100, 70, 90);
+
+            // 학생들의 정보를 담는 배열
+            var students = [student0, student1, student2];
+
+            console.log(students);
+            console.log(students[0]);
+            console.log(students[0].name);
+            // 아직 Student 생성자 함수가 정의되지 않아서 오류 발생.
+
+            for(let i=0; i<students.length; i++) {
+                area4.innerHTML += students[i];/*.toString()*/
+            }
+        }
+
+        // 학생 객체를 생성할 수 있게끔 해주는 생성자 함수
+        // 첫글자는 대문자, return은 학생 한명의 정보를 담고 있는 객체
+    </script>
+
+</body>
+</html>

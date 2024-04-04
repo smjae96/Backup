@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice4</title>
+    <style>
+        #information {
+            width: 50%;
+        }
+        #etc {
+            height: 100px;
+            width: 300px;
+        }
+
+        /* #etc3 {
+            vertical-align: bottom;
+        }
+        #etc2 {
+            vertical-align: bottom;
+        } */
+
+        #print {
+            width: 500px;
+            height: 300px;
+            padding: 0%;
+        }
+
+        datalist {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            writing-mode:horizontal-tb;
+            width: 200px;
+            padding-left: 85px;
+        }
+
+        option {
+            padding: 0;
+        }
+
+        input[type="range"] {
+            width: 200px;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Practice4</h1>
+    <fieldset id="information">
+        <!-- legend : fieldset태그로 묶어놓은 영역에 제목을 표시할 때 사용 -->
+        <legend>구매 정보</legend>
+        <ul class="nodot">
+            <li class="margin">
+                <label for="buyer">구매자 :</label>
+                <input type="text" id="buyer" placeholder="구매자의 이름을 입력하세요" />
+            </li>
+            <li>
+                <label for="product">상품명 :</label>
+                <input type="text" id="product" placeholder="구매 상품 명을 입력하세요">
+            </li>
+            <li>
+                <label for="price">가격 :</label>
+                <input type="text" id="price" placeholder="구매 가격을 입력하세요">
+            </li>
+            <li>
+                <labe1 for="quantity">구매 수량 :</labe1>
+                <input type="number" id="quantity" min="10" max="100" placeholder="최소 10." onkeyup="keyup()">
+            </li>
+            <li>
+                <label for="grade">납품 등급 :</label>
+                <input type="range" id="grade" min="1" max="9" step="2" list="markers">
+                <datalist id="markers">
+                    <option value="1" label="1"></option>
+                    <option value="3" label="3"></option>
+                    <option value="5" label="5"></option>
+                    <option value="7" label="7"></option>
+                    <option value="9" label="9"></option>
+                </datalist>
+            </li>
+            <li id="etc3">
+                <label for="etc" id="etc2">기타 사항 :</label>
+                <textarea id="etc"></textarea>
+            </li>
+        </ul>
+    </fieldset>
+    <br><br>
+    <button onclick="print()">입력 값 출력하기</button>
+    <br><br>
+    <fieldset id="print"></fieldset>
+    <script>
+        function print() {
+            let print1 = document.getElementById("print");
+            let buyer = document.getElementById("buyer");
+            let product = document.getElementById("product");
+            let price = document.getElementById("price");
+            let quantity = document.getElementById("quantity");
+            let grade = document.getElementById("grade");
+            let etc = document.getElementById("etc")
+            // if(quantity.value>100) {
+            //     quantity.value = 100;
+            // }
+            print1.innerHTML = "구매자 명 : " + buyer.value + "<br>"
+                + "상품명 : " + product.value + "<br>"
+                + "가격 : " + price.value + "만원<br>"
+                + "구매 수량 : " + keyup() + "개<br>"
+                + "납품 등급 : " + grade.value + "등급<br>"
+                + "기타 사항 : " + etc.value + "<br>";
+        }
+
+        function keyup() {
+            let quantity = document.getElementById("quantity");
+            if (quantity.value > 100) {
+                quantity.value = 100;
+            } else {
+                quantity.value = quantity.value;
+            }
+            return quantity.value
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>

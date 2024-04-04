@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Script 변수</title>
+</head>
+<body>
+    <h1>변수와 자료형</h1>
+    <h2>변수 선언 시 var, let, const를 이용하여 변수를 선언</h2>
+    <h3>* var, let, const의 차이점</h3>
+
+    <h4>1) 변수 선언 방법</h4>
+    <button onclick="diffDeclare()">클릭</button>
+    <script>
+        function diffDeclare() {
+            // 1) var 는 중복 선언 가능(단점), 재할당 가능
+            var userId = "user01"; // 변수 선언
+            console.log(userId);
+
+            var userId = "user02"; // 중복 선언
+            console.log(userId);
+
+            userId = "user03";      // 재할당
+            console.log(userId);
+            // ---------------------------------------------------------
+            console.log("-------------------------------------------------")
+
+            // 2) let 은 중복 선언 불가능, 재할당 가능 (자바에서 변수와 유사)
+            let userPw = "pass01"; // 변수 선언
+            console.log(userPw);
+
+            //let userPw = "pass02"; // 중복 선언 불가능
+
+            userPw = "pass02";      // 재할당
+            console.log(userPw);
+            // ------------------------------------------------------------
+            console.log("---------------------------------------------------")
+
+            // 3) const 는 중복선언 불가능, 재할당 불가능 (자바에서 상수와 유사)
+            //      (상수와 같은 개념 == 한 번 초기화된 값은 변경이 불가능)
+            const userName = "홍길동";
+            console.log(userName);
+
+            // const userName = "아무개"; // 중복 선언 불가능!!
+
+            userName = "아무개";        // 재할당 불가능! 콘솔창에 오류 발생
+            console.log(userName);
+            // ---------------------------------------------------------------
+            /*
+                var : 자유롭게 변수 선언, 사용할 수 있다는 장점이 있지만
+                      중복된 변수가 남발할 수 있고 의도치 않게 값이 변경되어 있을 수 있음.
+                      => 가장 큰 단점
+                => 보완되어 let, const 타입이 추가됨!
+
+                권장사항: let, const 사용!
+            */
+        }
+    </script>
+    <hr>
+    <h3>* 자료형</h3>
+    <p>
+        변수 선언 시 자료형을 별도로 지정하지 않음 (자료형의 개념이 없는 건 아님!) <br>
+        => 변수에 대입되는 값(리터럴)에 따라서 알아서 자료형이 결정됨
+    </p>
+    <h4>자바스크립트의 자료형</h4>
+    <ul>
+        <li>String(문자열)</li>
+        <li>number(숫자)</li>
+        <li>boolean(논리값)</li>
+        <li>object(객체)</li>
+        <li>function(함수)</li>
+        <li>undefined(초기화가 되지 않은 변수)</li>
+    </ul>
+    <button onclick="typeTest()">클릭</button>
+    <div id="area" style="border: 1px solid gray;"></div>
+
+    <script>
+        function typeTest() {
+            const name = "홍길동"; // 문자열 값은 작은따옴표(''), 큰따옴표("") 모두 사용 가능
+            const age = 40;
+            const flag = true;
+
+            const hobby = ["등산", "넷플릭스", "게임"];     // 배열 객체
+            //const divEl = document.getElementById("area")
+            const divEl = document.querySelector("#area");  // div 요소 객체
+            const user = {          //key:value 형태의 객체
+                name: "아무개",
+                age: 35,
+                id: "amu35"
+            };
+
+            const testFn = function() {
+                alert("zzzzz");
+            };
+
+            //const noVal;        // const는 상수로 선언과 동시에 초기화가 필요!
+            let noVal;
+
+            // 콘솔에 출력
+            console.log(name);
+            console.log(age);
+            console.log(flag);
+            console.log(hobby);
+            console.log(divEl);
+            console.log(user);
+            console.log(testFn);
+            console.log(noVal);
+
+            // 화면에 출력
+            // 자료형 확인 시 사용하는 함수 : typeof(변수명) / typeof 변수명
+            divEl.innerHTML = name + ", " + typeof name + "<br>";
+            divEl.innerHTML += age + ", " + typeof age + "<br>";
+            divEl.innerHTML += flag + ", " + typeof flag + "<br>";
+            divEl.innerHTML += hobby + ", " + typeof hobby + "<br>";
+            divEl.innerHTML += divEl + ", " + typeof divEl + "<br>";
+            divEl.innerHTML += user + ", " + typeof user + "<br>";
+            divEl.innerHTML += testFn + ", " + typeof testFn + "<br>";
+            divEl.innerHTML += noVal + ", " + typeof noVal + "<br>";
+
+        }
+    </script>
+    <hr>
+    <h3> * 변수 명명 규칙</h3>
+    <ol>
+        <li>일반적으로 영어를 사용하며, 문자와 숫자 모두 사용 가능</li>
+        <li>특수문자 $ 또는 _만 사용 가능</li>
+        <li>숫자로 시작할 수 없음 ex) 1004aa </li>
+        <li>키워드를 변수명으로 사용할 수 없음 ex) let, var, .. 등 </li>
+    </ol>
+    <h3>변수명 표기법 (Naming Type)</h3>
+    <ol>
+        <li>camelCase => 대부분 언어에서 사용되는 표기법. 단어의 시작마다 대문자로 구분</li>
+        <li>snake_case => 파이썬에서 주로 사용되는 표기법. 단어의 시작마다 _로 구분</li>
+        <li>Pascalcase => c# 또는 ms계열의 언어에서 사용되는 표기법. 모든 단어의 시작을 대문자로 표기</li>
+    </ol>
+    <hr>
+    <h3>(참고) Hoisting ?</h3>
+    <p>
+        모든 변수 선언문이 코드의 최상단으로 이동되는 것처럼 느껴지는 현상 <br>
+        var 타입에서 확인이 되고, let과 const는 호이스팅(hoisting)이 일어나지 않는 것처럼 동작하게 해줌.
+    </p>
+    <script>
+        console.log(name);  // name변수를 선언하기 전에 콘솔에 출력해 놓아도 이후 name 변수를 "hong"으로 선언하면 콘솔에 그대로 출력됨.
+        var name = "hong";
+        console.log(name);
+
+        console.log(name2); // 에러 발생!
+        let name2 = "jang";
+        console.log(name2);
+
+    </script>
+
+    <br><br><br><br><br><br>
+
+</body>
+</html>

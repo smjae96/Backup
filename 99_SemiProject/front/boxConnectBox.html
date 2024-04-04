@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #boxA {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        #boxB {
+            display: none;
+            border: 1px solid #ddd;
+            padding: 10px;
+            position: relative;
+        }
+
+        #visitButton {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            padding: 5px;
+            cursor: pointer;
+            border: 1px solid black;
+            background-color: red;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const boxA = document.getElementById('boxA');
+            const boxB = document.getElementById('boxB');
+            const inputBox = document.getElementById('userInput');
+            const visitButton = document.getElementById('visitButton');
+
+            boxA.addEventListener('click', function () {
+                if (boxB.style.display === 'block') {
+                    boxB.style.display = 'none';
+                } else {
+                    const userInput = inputBox.value;
+                    if (userInput.trim() !== '') {
+                        boxB.innerHTML = userInput + "<button id='visitButton' onclick='moveToGoogle()'>이동</button>";
+                        boxB.style.display = 'block';
+                        
+                    }
+                }
+            });   
+
+
+
+        });
+        function moveToGoogle() {
+            window.location.href = 'https://www.google.com';
+        }
+
+    </script>
+    <title>Input 상자 예제</title>
+</head>
+
+<body>
+    <div id="boxA">
+        <input type="text" id="userInput" placeholder="내용을 입력하세요">
+    </div>
+    <div id="boxB">
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=08_Inherit/src&lt;com.kh.practice.point.model.vo{Point.java[Point" modifiers="1" timestamp="1704165668226"/>
+    <typeInfo handle="=Homework4_Inheritance/src&lt;com.kh.hw.person.model.vo{Person.java[Person" modifiers="1" timestamp="1704184747502"/>
+    <typeInfo handle="=09_Polymorphism/C:\/dev\/eclipse-jee-2022-03-R-win32-x86_64\/eclipse\/plugins\/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208\/jre\/lib\/jrt-fs.jar`java.base=/module=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/17\/docs\/api\/=/&lt;java.lang(Object.class[Object" modifiers="33" timestamp="1702957128620"/>
+    <typeInfo handle="=SelfPractice/src&lt;abstracted{Parent.java[Parent" modifiers="1025" timestamp="1704334185525"/>
+    <typeInfo handle="=10_Interface/src&lt;com.kh.interface_practice{Print.java[Print" modifiers="1025" timestamp="1704338143658"/>
+    <typeInfo handle="=10_AbstractNInterface/src&lt;com.kh.practice.chap02_abstractNInterface.model.vo{SmartPhone.java[SmartPhone" modifiers="1025" timestamp="1704339999169"/>
+    <typeInfo handle="=10_Homework_SimJaeYoon/src&lt;package3.model.vo{Animal.java[Animal" modifiers="1025" timestamp="1704353341248"/>
+    <typeInfo handle="=00_ReviewsDictionary/src&lt;com.kh.inheritance{Customer.java[Customer" modifiers="1" timestamp="1704679876334"/>
+    <typeInfo handle="=12_Exception/C:\/dev\/eclipse-jee-2022-03-R-win32-x86_64\/eclipse\/plugins\/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208\/jre\/lib\/jrt-fs.jar`java.base=/module=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/17\/docs\/api\/=/&lt;java.lang(Exception.class[Exception" modifiers="33" timestamp="1702957128620"/>
+    <typeInfo handle="=SelfPractice/src&lt;generic{A.java[A" modifiers="513" timestamp="1704933881044"/>
+    <typeInfo handle="=SelfPractice/src&lt;generic{B.java[B" modifiers="513" timestamp="1704933893002"/>
+    <typeInfo handle="=00_ReviewsDictionary/src&lt;com.kh.interface_10{TestInterface.java[TestInterface" modifiers="513" timestamp="1705549183146"/>
+    <typeInfo handle="=java_complete_SimJaeYoon/C:\/dev\/eclipse-jee-2022-03-R-win32-x86_64\/eclipse\/plugins\/org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.2.v20220201-1208\/jre\/lib\/jrt-fs.jar`java.base=/module=/true=/=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/17\/docs\/api\/=/&lt;java.lang(Thread.class[Thread" modifiers="33" timestamp="1702957128620"/>
+    <typeInfo handle="=MiniProject_SimJaeYoon/src&lt;nutrition{Nutrition.java[Nutrition" modifiers="513" timestamp="1706865473950"/>
+    <typeInfo handle="=MiniProject_SimJaeYoon/src&lt;food{Food.java[Food" modifiers="1" timestamp="1706866302379"/>
+</typeInfoHistroy>

@@ -1,0 +1,15 @@
+package codewars_0401.sol;
+
+public class Sum {
+	public static int GetSum(int a, int b) {
+		int max = 0;
+		int min = 0;
+		if(a>b) {
+			
+		}
+
+		
+	
+		
+	}
+}

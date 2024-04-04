@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="lombok.Getter"/>
+    <fullyQualifiedTypeName name="lombok.Setter"/>
+    <fullyQualifiedTypeName name="lombok.ToString"/>
+    <fullyQualifiedTypeName name="lombok.NoArgsConstructor"/>
+    <fullyQualifiedTypeName name="com.kh.database.JdbcTemplate"/>
+    <fullyQualifiedTypeName name="lombok.AllArgsConstructor"/>
+    <fullyQualifiedTypeName name="com.kh.model.dao.PlanDao"/>
+    <fullyQualifiedTypeName name="lombok.Builder"/>
+    <fullyQualifiedTypeName name="com.kh.model.vo.Plan"/>
+    <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="com.kh.model.dao.UserDao"/>
+    <fullyQualifiedTypeName name="com.kh.model.vo.User"/>
+    <fullyQualifiedTypeName name="com.kh.database.JdbcTemplate_Sim2"/>
+    <fullyQualifiedTypeName name="com.kh.database.RowMapper"/>
+</qualifiedTypeNameHistroy>

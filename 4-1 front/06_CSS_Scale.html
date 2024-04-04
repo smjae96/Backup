@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animation Scale</title>
+</head>
+<style>
+    .scale-box {
+        width: 200px;   /* 요소 가로 길이 */
+        height: 200px;  /* 요소 세로 길이 */
+        border: 2px solid;  /* 테두리 */
+
+        /* transform : 변형 관련 스타일 */
+        transform: scale(1.0); /* scale: 요소 사이즈 변형 */
+        /* transition-duration: 변형 시 속도 */
+        transition-duration: 2s;    
+    }
+    /* 마우스를 해당 요소에 올렸을 때(요소:hover), 요소의 사이즈를 1/2만큼 (scale(0.5)) 줄어들도록 변형 */
+    .scale-box:hover { 
+        transform: scale(0.5);
+        background-color: red;
+    }
+</style>
+<body>
+    <div class= "scale-box"></div>
+</body>
+</html>

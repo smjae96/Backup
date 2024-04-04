@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice1</title>
+    <style>
+        #trip {
+            margin-left : 99px;
+        }
+        #computer {
+            margin-left : 27px;
+        }
+        #comic {
+            margin-left : 19px;
+        }
+    </style>
+    <script src ="practice1.js"></script>
+</head>
+<body>
+    <h1>Practice 1</h1>
+    <form>
+        <!-- fieldset : form태그 내에서 영역을 나누어 표시할 때 사용 태그 -->
+        <fieldset>
+            <!-- legend : 나눈 영역에 의미하는 제목을 표시하는 태그 -->
+            <legend>취미</legend>
+            <input type="checkbox" id="total" name="hobby" value="전체선택" onchange="changeTotal()">
+            <label for="total">전체선택</label>
+            <input type="checkbox" id="overall" name="hobby" value="종합" 
+                    onchange="checkBoxTrigger()">
+            <label for="overall">종합</label>
+            <input type="checkbox" id="novel" name="hobby" value="소설"
+                    onchange="checkBoxTrigger()">
+            <label for="novel">소설</label>
+            <input type="checkbox" id="poem/essay" name="hobby" value="시/에세이"
+                    onchange="checkBoxTrigger()">
+            <label for="poem/essay">시/에세이</label>
+            <input type="checkbox" id="economy/management" name="hobby" value="경제/경영"
+                    onchange="checkBoxTrigger()">
+            <label for="economy/management">경제/경영</label>
+            <input type="checkbox" id="self-development" name="hobby" value="자기계발"
+                    onchange="checkBoxTrigger()">
+            <label for="self-development">자기계발</label>
+            <input type="checkbox" id="child" name="hobby" value="아동"
+                    onchange="checkBoxTrigger()">
+            <label for="child">아동</label>
+            <br>
+            <input type="checkbox" id="trip" name="hobby" value="여행"
+                    onchange="checkBoxTrigger()">
+            <label for="trip">여행</label>
+            <input type="checkbox" id="science" name="hobby" value="과학"
+                    onchange="checkBoxTrigger()">
+            <label for="science">과학</label>
+            <input type="checkbox" id="history/culture" name="hobby" value="역사/문화"
+                    onchange="checkBoxTrigger()">
+            <label for="history/culture">역사/문화</label>
+            <input type="checkbox" id="foreign-language" name="hobby" value="외국어"
+                    onchange="checkBoxTrigger()">
+            <label for="foreign-language">외국어</label>
+            <input type="checkbox" id="computer" name="hobby" value="컴퓨터"
+                    onchange="checkBoxTrigger()">
+            <label for="computer">컴퓨터</label>
+            <input type="checkbox" id="comic" name="hobby" value="만화"
+                    onchange="checkBoxTrigger()">
+            <label for="comic">만화</label>
+        </fieldset>        
+    </form>   
+    <button onclick="categoryChoose()">카테고리 선택</button>
+    <div id="area1"></div> 
+
+
+</body>
+</html>
+
